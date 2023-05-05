@@ -2,6 +2,14 @@ from rest_framework import serializers
 from .models import Article
 
 class ArticleSerializer(serializers.ModelSerializer):
+    """
+    - Serializer for the Article model
+    - Owner shows users username in readonly format
+    - Get function to set is_owner to true/false
+    - Obtain profile id from profile model
+    - Obtain profile image form prile model and validate to check it exists
+    else return none
+    """
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')
