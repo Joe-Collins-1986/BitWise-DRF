@@ -3,6 +3,12 @@ from .models import Language
 from datetime import date
 
 class LanguageSerializer(serializers.ModelSerializer):
+    """
+    - Serializer for the Language model
+    - Owner shows users username in readonly format
+    - Get function to set is_owner to true/false
+    - Calculate years experiance form date started using language
+    """
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
     years_exp = serializers.SerializerMethodField()
@@ -41,6 +47,11 @@ class LanguageSerializer(serializers.ModelSerializer):
         ]
 
 class LanguageDetailSerializer(LanguageSerializer):
+    """
+    - Serializer for the Language model - Detailed view
+    - Inherits from LanguageSerializer
+    - Sets language to readonly
+    """
     language = serializers.ReadOnlyField()
 
 
