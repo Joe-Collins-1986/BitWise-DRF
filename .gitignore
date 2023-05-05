@@ -8,6 +8,3 @@ node_modules/
 
 # Ignore virtual environment
 venv/
-
-# Ignore dev database
-db.sqlite3
