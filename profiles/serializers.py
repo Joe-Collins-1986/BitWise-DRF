@@ -2,6 +2,11 @@ from rest_framework import serializers
 from .models import Profile
 
 class ProfileSerializer(serializers.ModelSerializer):
+    """
+    Serializer for the Profile model
+    Owner shows users username in readonly format
+    Get function to set is_owner to true/false
+    """
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
 

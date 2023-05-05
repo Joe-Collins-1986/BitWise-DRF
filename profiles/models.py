@@ -5,6 +5,10 @@ from django_resized import ResizedImageField
 
 
 class Profile(models.Model):
+    """
+    Profile Model:
+    1:2:1 Key - User
+    """
     owner = models.OneToOneField(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     profile_name = models.CharField(max_length=50, blank=True)
