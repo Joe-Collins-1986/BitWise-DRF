@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'languages',
     'articles',
     'comments',
+    'likes',
 
 ]
 
