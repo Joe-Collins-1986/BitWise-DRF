@@ -2,12 +2,14 @@ from rest_framework import generics, permissions
 from bitwise.permissions import IsOwnerOrReadOnly
 from .models import Comment
 from .serializers import CommentDetailSerializer, CommentSerializer
+from django_filters.rest_framework import DjangoFilterBackend
 
 class CommentList(generics.ListCreateAPIView):
     """
     - List out all the comments
     - Option to create new comment if logged in
     with owner = request.user
+    - Filter to article
     """
     serializer_class = CommentSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
@@ -15,6 +17,14 @@ class CommentList(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
+
+    filter_backends = [
+        DjangoFilterBackend,
+    ]
+
+    filterset_fields = [
+        'article',
+    ]
 
 
 class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
