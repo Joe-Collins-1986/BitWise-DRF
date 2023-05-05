@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'storages',
     'django_resized',
     'rest_framework',
+    'django_filters',
 
     'profiles',
     'languages',
