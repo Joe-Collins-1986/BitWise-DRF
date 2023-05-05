@@ -14,7 +14,7 @@ class ProfileList(generics.ListAPIView):
     removed so no delete functionality required
     - Due to no create, update, delete no permission class required
     - Filter order by counts and date
-    - 
+    - Filer by fieldsets - following, followed, language known
     """
     serializer_class = ProfileSerializer
     queryset = Profile.objects.annotate(
