@@ -21,7 +21,7 @@ class ArticleSerializer(serializers.ModelSerializer):
         model = Article
         fields = [
             'id', 'owner', 'created_at',
-            'updated_at', 'art_title', 'art_content',
+            'updated_at', 'article_title', 'article_content',
             'primary_language', 'github_link',
             'is_owner', 'profile_id', 'profile_image',
         ]
