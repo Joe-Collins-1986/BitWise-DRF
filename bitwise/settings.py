@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'storages',
     'django_resized',
     'django.contrib.staticfiles',
+    'rest_framework',
 
     'profiles',
 
