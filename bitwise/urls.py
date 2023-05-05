@@ -24,4 +24,5 @@ urlpatterns = [
     path('languages/', include('languages.urls')),
     path('articles/', include('articles.urls')),
     path('comments/', include('comments.urls')),
+    path('likes/', include('likes.urls')),
 ]
