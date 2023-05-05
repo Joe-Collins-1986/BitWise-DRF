@@ -5,7 +5,7 @@ from datetime import date
 class LanguageSerializer(serializers.ModelSerializer):
     """
     - Serializer for the Language model
-    - Owner shows users username in readonly format
+    - Owner shows object owner's username in readonly format
     - Get function to set is_owner to true/false
     - Calculate years experiance form date started using language
     """

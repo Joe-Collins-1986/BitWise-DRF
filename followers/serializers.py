@@ -1,20 +1,22 @@
 from django.db import IntegrityError
 from rest_framework import serializers
-from .models import Like
+from .models import Follower
 
-class LikeSerializer(serializers.ModelSerializer):
+class FollowerSerializer(serializers.ModelSerializer):
     """
-    - Serializer for the Like model
+    - Serializer for the Follwer model
     - Owner shows object owner's username in readonly format
-    - Validate if like already exists between user and 
-    article and present tailored error message if duplication 
+    - Followed name shows followed user's username in readonly format
+    - Validate if follower object already exists between user and 
+    followed user and present tailored error message if duplication
     """
     owner = serializers.ReadOnlyField(source='owner.username')
+    followed_name = serializers.ReadOnlyField(source='followed.username')
 
     class Meta:
-        model = Like
+        model = Follower
         fields = [
-            'id', 'owner', 'article',
+            'id', 'owner', 'followed_name', 'followed',
             'created_at',
         ]
     

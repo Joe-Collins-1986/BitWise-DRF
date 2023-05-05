@@ -4,7 +4,7 @@ from .models import Profile
 class ProfileSerializer(serializers.ModelSerializer):
     """
     Serializer for the Profile model
-    Owner shows users username in readonly format
+    Owner shows object owner's username in readonly format
     Get function to set is_owner to true/false
     """
     owner = serializers.ReadOnlyField(source='owner.username')
