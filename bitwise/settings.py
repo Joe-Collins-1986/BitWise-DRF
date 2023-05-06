@@ -164,4 +164,9 @@ DJANGORESIZED_DEFAULT_QUALITY = 90
 DJANGORESIZED_DEFAULT_KEEP_META = False
 
 # REST SCHEMA CLASS FOR API DOCUMENTATION
-REST_FRAMEWORK = { 'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema' }
+REST_FRAMEWORK = { 
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
+    'DEFAULT_PAGINATION_CLASS':
+        'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 20,
+    }
