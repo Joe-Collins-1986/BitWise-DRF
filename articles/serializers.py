@@ -1,6 +1,8 @@
+from django.contrib.humanize.templatetags.humanize import naturaltime
 from rest_framework import serializers
 from .models import Article
 from likes.models import Like
+from datetime import timedelta
 
 class ArticleSerializer(serializers.ModelSerializer):
     """
@@ -18,12 +20,20 @@ class ArticleSerializer(serializers.ModelSerializer):
     profile_image = serializers.SerializerMethodField()
     like_id = serializers.SerializerMethodField()
 
+    updated_at = serializers.SerializerMethodField()
+
     comments_count = serializers.ReadOnlyField()
     likes_count = serializers.ReadOnlyField()
 
     def get_is_owner(self, obj):
         request = self.context['request']
         return request.user == obj.owner
+    
+    def get_updated_at(self, obj):
+        time_diff = obj.updated_at - obj.created_at
+        if time_diff <= timedelta(seconds=30):
+            return None
+        return naturaltime(obj.updated_at)
     
     def get_profile_image(self, obj):
         profile = obj.owner.profile

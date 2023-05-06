@@ -26,8 +26,10 @@ class LanguageSerializer(serializers.ModelSerializer):
                 (today.month == obj.used_since.month and today.day < obj.used_since.day)
                 ):
                 years -= 1
+            if years < 1:
+                return "Less than one year"
             return years
-        return None
+        return "None"
     
     def validate(self, attrs):
         language = attrs.get('language')
