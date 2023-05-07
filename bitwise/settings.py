@@ -19,6 +19,42 @@ if os.path.isfile('env.py'):
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# SET AUTH FROM SESSION TO JWT DEPENDANT ON DEV
+# REST SCHEMA CLASS FOR API DOCUMENTATION
+# PAGINATION
+# DATE TIME FORMATING
+REST_FRAMEWORK = { 
+    'DEFAULT_AUTHENTICATION_CLASSES': [(
+        'rest_framework.authentication.SessionAuthentication'
+        if 'DEV' in os.environ
+        else 'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
+    )],
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
+    'DEFAULT_PAGINATION_CLASS':
+        'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 20,
+    'DATETIME_FORMAT': "%d %b %Y",
+    }
+
+REST_USE_JWT = True
+JWT_AUTH_SECURE = True
+JWT_AUTH_COOKIE = 'app-auth'
+JWT_AUTH_REFRESH_COOKIE = 'refresh-token'
+JWT_AUTH_SAMESITE = 'None'
+
+
+# OVERWRITE USER SERIALIZER WITH PROFILE ID AND IMAGE URL
+REST_AUTH_SERIALIZERS = {
+    'USER_DETAILS_SERIALIZER': 'bitwise.serializers.CurrentUserSerializer'
+}
+
+
+#DEV REST ENVIRONMENT
+if 'DEV' not in os.environ:
+    REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] = [
+        'rest_framework.renderers.JSONRenderer',
+    ]
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
@@ -124,7 +160,6 @@ else:
      DATABASES = {
          'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
      }
-     print('connected to live database')
 
 
 # Password validation
@@ -192,39 +227,3 @@ STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
 # IMAGE SETUP
 DJANGORESIZED_DEFAULT_QUALITY = 90
 DJANGORESIZED_DEFAULT_KEEP_META = False
-
-# SET AUTH FROM SESSION TO JWT DEPENDANT ON DEV
-# REST SCHEMA CLASS FOR API DOCUMENTATION
-# PAGINATION
-# DATE TIME FORMATING
-REST_FRAMEWORK = { 
-    'DEFAULT_AUTHENTICATION_CLASSES': [(
-        'rest_framework.authentication.SessionAuthentication'
-        if 'DEV' in os.environ
-        else 'dj_rest_auth.jwt_auth.JWTCookieAuthentication'
-    )],
-    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
-    'DEFAULT_PAGINATION_CLASS':
-        'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 20,
-    'DATETIME_FORMAT': "%d %b %Y",
-    }
-
-REST_USE_JWT = True
-JWT_AUTH_SECURE = True
-JWT_AUTH_COOKIE = 'app-auth'
-JWT_AUTH_REFRESH_COOKIE = 'refresh-token'
-JWT_AUTH_SAMESITE = 'None'
-
-
-# OVERWRITE USER SERIALIZER WITH PROFILE ID AND IMAGE URL
-REST_AUTH_SERIALIZERS = {
-    'USER_DETAILS_SERIALIZER': 'bitwise.serializers.CurrentUserSerializer'
-}
-
-
-#DEV REST ENVIRONMENT
-if 'DEV' not in os.environ:
-    REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] = [
-        'rest_framework.renderers.JSONRenderer',
-    ]
