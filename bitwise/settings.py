@@ -48,7 +48,6 @@ REST_AUTH_SERIALIZERS = {
     'USER_DETAILS_SERIALIZER': 'bitwise.serializers.CurrentUserSerializer'
 }
 
-
 #DEV REST ENVIRONMENT
 if 'DEV' not in os.environ:
     REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] = [
