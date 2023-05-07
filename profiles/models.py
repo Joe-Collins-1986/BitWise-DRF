@@ -18,7 +18,7 @@ class Profile(models.Model):
         blank=True,
         size=[150, 150],
         crop=['middle', 'center'],
-        force_format='JPEG')
+        force_format='WEBP')
 
     class Meta:
         ordering = ['-created_at']
