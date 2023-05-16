@@ -14,11 +14,13 @@ class Profile(models.Model):
     profile_name = models.CharField(max_length=50, blank=True)
     bio = models.TextField(blank=True)
     image = ResizedImageField(
+        default='../images/profileImages/default.jpeg',
         upload_to='images/profileImages/',
         blank=True,
         size=[150, 150],
         crop=['middle', 'center'],
         force_format='JPEG')
+
 
     class Meta:
         ordering = ['-created_at']
