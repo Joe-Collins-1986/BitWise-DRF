@@ -57,4 +57,7 @@ class ArticleDetail(generics.RetrieveUpdateDestroyAPIView):
     """
     serializer_class = ArticleSerializer
     permission_classes = [IsOwnerOrReadOnly]
-    queryset = Article.objects.all()
+    queryset = Article.objects.annotate(
+            comments_count = Count('comments', distinct=True),
+            likes_count = Count('likes', distinct=True)
+        ).order_by('-created_at')
