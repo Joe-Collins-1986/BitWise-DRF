@@ -11,7 +11,7 @@ class Language(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="languages")
     language = models.CharField(
         max_length=25,
-        choices=LANGUAGE_CHOICES,
+        # choices=LANGUAGE_CHOICES,
         blank=True,
         )
     confidence = models.CharField(
