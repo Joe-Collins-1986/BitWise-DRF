@@ -19,6 +19,7 @@ class ArticleSerializer(serializers.ModelSerializer):
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')
     profile_image = serializers.SerializerMethodField()
     like_id = serializers.SerializerMethodField()
+    has_user_commented = serializers.SerializerMethodField()
 
     updated_at = serializers.SerializerMethodField()
 
@@ -49,6 +50,12 @@ class ArticleSerializer(serializers.ModelSerializer):
             ).first()
             return like.id if like else None
         return None
+    
+    def get_has_user_commented(self, obj):
+        user = self.context['request'].user
+        if user.is_authenticated:
+            return obj.comments.filter(owner=user).exists()
+        return False
 
     class Meta:
         model = Article
@@ -58,4 +65,5 @@ class ArticleSerializer(serializers.ModelSerializer):
             'primary_language', 'github_link',
             'is_owner', 'profile_id', 'profile_image',
             'like_id', 'comments_count', 'likes_count',
+            'has_user_commented',
         ]
