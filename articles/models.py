@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from languages.choices import LANGUAGE_CHOICES
 
 
 class Article(models.Model):
@@ -15,7 +14,6 @@ class Article(models.Model):
     article_content = models.TextField(blank=True)
     primary_language = models.CharField(
         max_length=25,
-        # choices=LANGUAGE_CHOICES,
         blank=True,
     )
     github_link = models.URLField(blank=True)

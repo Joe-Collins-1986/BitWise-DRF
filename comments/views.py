@@ -3,6 +3,10 @@ from bitwise.permissions import IsOwnerOrReadOnly
 from .models import Comment
 from .serializers import CommentDetailSerializer, CommentSerializer
 from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.pagination import PageNumberPagination
+
+class CommentPagination(PageNumberPagination):
+    page_size = 10
 
 class CommentList(generics.ListCreateAPIView):
     """
@@ -14,6 +18,7 @@ class CommentList(generics.ListCreateAPIView):
     serializer_class = CommentSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Comment.objects.all()
+    pagination_class = CommentPagination
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
