@@ -1,6 +1,7 @@
 from django.contrib.humanize.templatetags.humanize import naturaltime
 from rest_framework import serializers
 from .models import Article
+from comments.models import Comment
 from likes.models import Like
 from datetime import timedelta
 
@@ -20,6 +21,7 @@ class ArticleSerializer(serializers.ModelSerializer):
     profile_image = serializers.SerializerMethodField()
     like_id = serializers.SerializerMethodField()
     has_user_commented = serializers.SerializerMethodField()
+    current_user_comments_count = serializers.SerializerMethodField()
 
     updated_at = serializers.SerializerMethodField()
 
@@ -56,6 +58,14 @@ class ArticleSerializer(serializers.ModelSerializer):
         if user.is_authenticated:
             return obj.comments.filter(owner=user).exists()
         return False
+    
+    def get_current_user_comments_count(self, obj):
+        user = self.context['request'].user
+        if user.is_authenticated:
+            return Comment.objects.filter(owner=user, article=obj).count()
+        return 0
+    
+    
 
     class Meta:
         model = Article
@@ -65,5 +75,5 @@ class ArticleSerializer(serializers.ModelSerializer):
             'primary_language', 'github_link',
             'is_owner', 'profile_id', 'profile_image',
             'like_id', 'comments_count', 'likes_count',
-            'has_user_commented',
+            'has_user_commented', 'current_user_comments_count'
         ]
