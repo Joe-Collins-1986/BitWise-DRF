@@ -25,8 +25,13 @@ class ProfileList(generics.ListAPIView):
     ).order_by('-created_at')
 
     filter_backends = [
+        filters.SearchFilter,
         filters.OrderingFilter,
         DjangoFilterBackend,
+    ]
+
+    search_fields = [
+        'profile_name',
     ]
 
     filterset_fields = [
