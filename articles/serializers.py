@@ -28,6 +28,14 @@ class ArticleSerializer(serializers.ModelSerializer):
     comments_count = serializers.ReadOnlyField()
     likes_count = serializers.ReadOnlyField()
 
+    is_following = serializers.SerializerMethodField()
+
+    def get_is_following(self, obj):
+        user = self.context['request'].user
+        if user.is_authenticated:
+            return obj.owner.followed.filter(owner=user).exists()
+        return False
+
     def get_is_owner(self, obj):
         request = self.context['request']
         return request.user == obj.owner
@@ -75,5 +83,6 @@ class ArticleSerializer(serializers.ModelSerializer):
             'primary_language', 'github_link',
             'is_owner', 'profile_id', 'profile_image',
             'like_id', 'comments_count', 'likes_count',
-            'has_user_commented', 'current_user_comments_count'
+            'has_user_commented', 'current_user_comments_count',
+            'is_following'
         ]
