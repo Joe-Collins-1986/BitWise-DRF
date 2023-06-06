@@ -2,6 +2,7 @@ from rest_framework import generics, permissions
 from bitwise.permissions import IsOwnerOrReadOnly
 from .models import Language
 from .serializers import LanguageDetailSerializer, LanguageSerializer
+from django_filters.rest_framework import DjangoFilterBackend
 
 class LanguageList(generics.ListCreateAPIView):
     """
@@ -15,6 +16,14 @@ class LanguageList(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
+
+    filter_backends = [
+        DjangoFilterBackend,
+    ]
+
+    filterset_fields = [
+        'owner__profile',
+    ]
 
 class LanguageDetail(generics.RetrieveUpdateDestroyAPIView):
     """
