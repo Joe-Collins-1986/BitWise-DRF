@@ -36,7 +36,7 @@ class LanguageSerializer(serializers.ModelSerializer):
         owner = self.context['request'].user
 
         if Language.objects.filter(owner=owner, language=language).exists():
-            raise serializers.ValidationError({'detail': 'Language already selected by the user.'})
+            raise serializers.ValidationError({'detail': 'Language already created.'})
         return attrs
     
 
