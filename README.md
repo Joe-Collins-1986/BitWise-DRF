@@ -15,10 +15,10 @@
   - [Priority Matrix]
   - [Entity Relationship Diagram]
 - [API Build]
-  - [Website Objectives]
-  - [User Stories]
-  - [Priority Matrix]
-  - [Entity Relationship Diagram]
+  - [Models]
+  - [Views]
+  - [Serializers]
+  - [CRUD - Endpoint Map]
 - [Further Development]
 - [Technologies Used]
   - [Languages Used]
@@ -133,6 +133,49 @@ These also breakdown:
 
 ## Priority Matrix
 
+The below graphs map out the feasibility of the backend features considered against the user value they provide to help establish the priority they have as part of the build.
+
+<details>
+    <summary style="font-weight:bold">High Level Priority Matrix</summary>
+
+![High Level Priority Matrix](readme-assets/planning/high-level-priority-matrix.png)
+<br>
+
+</details>
+
+<details>
+    <summary style="font-weight:bold">Detailed Priority Matrix</summary>
+
+![Detailed Priority Matrix](readme-assets/planning/detailed-priority-matrix.png)
+<br>
+
+If you have a LucidChart account, you can also view this priority matrix [here](https://lucid.app/lucidspark/0daa104b-7056-4351-b4f9-e2e77701b480/edit?viewport_loc=769%2C650%2C6475%2C6256%2C0_0&invitationId=inv_e5bb265c-e341-41fd-9c04-266266ad9a61).
+<br>
+
+</details>
+
+## Entity Relationship Diagram
+
+The below demonstrates the API models and their attributes as well as documenting how they interact.
+
+![DataBase ER Diagram](readme-assets/planning/entity-relationship-diagram.png)<br>
+
+If you have a LucidChart account, you can also view this functions flow [here](https://lucid.app/lucidchart/9582ec18-126e-4b88-b601-011cb64f6e74/edit?viewport_loc=121%2C-170%2C1656%2C1932%2C0_0&invitationId=inv_0eff3f1b-ba36-4160-a99a-1fa7881fa18a).
+<br>
+
+# API Build
+
+## Models
+
+## Views
+
+## Serializers
+
+## CRUD - Endpoint Map
+
+<details>
+    <summary style="font-weight:bold">CRUD Table</summary>
+
 | TOPIC     | URL                            | LIST/READ<br>(GET)   | CREATE<br>(POST)                                                                         | UPDATE<br>(PUT) | PARTIAL UPDATE<br>(PATCH) | DELETE<br>(DELETE) | OVERALL  |
 | --------- | ------------------------------ | -------------------- | ---------------------------------------------------------------------------------------- | --------------- | ------------------------- | ------------------ | -------- |
 | AUTH      | /dj-rest-auth/registration/    | ❌                   | ✅                                                                                       | ❌              | ❌                        | ❌                 | C        |
@@ -165,3 +208,5 @@ For further insight into endpoinds see API ducmentation [link](https://bitwise-c
 
 - Website used to convert excel to markdown: [here](https://tabletomarkdown.com/convert-spreadsheet-to-markdown/)
 - Website used to convert back to excel incase updates required: [here](https://tableconvert.com/markdown-to-excel)
+
+</details>
