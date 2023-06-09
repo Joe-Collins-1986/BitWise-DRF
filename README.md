@@ -10,14 +10,17 @@
   - [Project Introduction](#project-introduction)
 - [Project Planning](#project-planning)
   - [Problem Statement](#problem-statement)
+  - [Mind Map](#mind-map)
   - [API Objectives](#api-objectives)
   - [User Stories](#user-stories)
-  - [Priority Matrix]
-  - [Entity Relationship Diagram]
-- [API Build]
+  - [Priority Matrix](#priority-matrix)
+  - [Entity Relationship Diagram](#entity-relationship-diagram)
+- [API Build](#api-build)
   - [Models]
   - [Views]
   - [Serializers]
+  - [Permissons]
+  - [Settings]
   - [CRUD - Endpoint Map]
 - [Further Development]
 - [Technologies Used]
@@ -77,6 +80,15 @@ The developer worked with the client and focus groups consisting of programmers 
 ![Problem Statement](readme-assets/planning/brainstorming.png)
 <br>
 If you have a LucidChart account, you can also view this Problem Statement [here](https://lucid.app/lucidspark/ddcc77ae-81e5-48bb-a143-1d8d08517e84/edit?page=0_0&invitationId=inv_33957d7f-3414-4f5b-afb7-62686062836a#).
+<br>
+
+## Mind Map
+
+The below image provides an initial mind-map into the features which might be appropriate for the BitWise API based on the problem statement. This will aide in the development of User Stories.
+
+![Mind Map](readme-assets/planning/mind-map.png)
+<br>
+If you have a LucidChart account, you can also view this Mind-Map [here](https://lucid.app/lucidspark/92bb6c34-c508-4ed3-81f9-8e426a018834/edit?viewport_loc=-424%2C-51%2C1937%2C2060%2C0_0&invitationId=inv_e1afcf88-79d6-418d-b020-bca52437b6bf).
 <br>
 
 ## API Objectives
@@ -171,7 +183,20 @@ If you have a LucidChart account, you can also view this functions flow [here](h
 
 ## Serializers
 
+## Permissons
+
+## Settings
+
 ## CRUD - Endpoint Map
+
+To detail the API CRUD functionality in full an API documentation page has been developed [here](https://bitwise-code-blog.herokuapp.com/#)
+
+<details>
+    <summary style="font-weight:bold">API Documentation Page Excert</summary>
+
+![API Documentation](readme-assets/build/api-doc.png)
+
+</details>
 
 <details>
     <summary style="font-weight:bold">CRUD Table</summary>
