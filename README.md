@@ -280,9 +280,9 @@ Copy code
 
 ### ArticleList
 
-The ArticleList view is a Django view that provides the necessary functionality to list and create articles. It inherits from generics.ListCreateAPIView, which is a generic view provided by the Django REST Framework.
+The ArticleList is a view that provides the necessary functionality to list and create articles. It inherits from generics.ListCreateAPIView, which is a generic view provided by the Django REST Framework.
 
-Features
+#### Features
 
 - List out all the articles:
   Inheriting from generics.ListCreateAPIView provides the necessary functionality to list all articles. The queryset is defined to fetch articles from the database, annotated with counts of comments and likes, and ordered by the creation date in descending order.
@@ -304,8 +304,8 @@ Added filtering functionality provided by the DjangoFilterBackend.
 - Filter by fieldsets - following, followed, article language, profile:
   Articles can be filtered based on different fieldsets, including:
 
-  - owner**followed**owner\_\_profile: Filter articles based on the profiles of users who are followed by the owner of the article.
-  - likes**owner**profile: Filter articles based on the profiles of users who have liked the article.
+  - owner\_\_followed\_\_owner\_\_profile: Filter articles based on the profiles of users who are followed by the owner of the article.
+  - likes\_\_owner\_\_profile: Filter articles based on the profiles of users who have liked the article.
   - owner\_\_profile: Filter articles based on the profile of the article owner.
   - primary_language: Filter articles based on the primary language of the article.
 
@@ -313,20 +313,112 @@ By utilizing the ArticleList view, users can efficiently list, create, search, o
 
 ### ArticleDetail
 
-The same Article serializer_class and permission_classes are used used for this view, and the permission_classes attribute sets the permission classes, with IsOwnerOrReadOnly being the only permission class defined.
+The ArticleDetail is a view that provides the necessary functionality to retrieve, update, and delete a specific article. It inherits from generics.RetrieveUpdateDestroyAPIView, which is a generic view provided by the Django REST Framework.
 
-As with the ArticleList, the ArticleDetail view also annotates the queryset with counts of comments and likes, and orders the queryset by the creation date in descending order.
+#### Features
 
-The serializer_class specifies the serializer to use for this view, and the permission_classes attribute sets the permission classes, with IsOwnerOrReadOnly being the only permission class defined.
+- Detail the specifically requested article:
+  Inheriting from generics.RetrieveUpdateDestroyAPIView provides the necessary functionality to retrieve a specific article. The queryset is defined to fetch the requested article from the database, annotated with counts of comments and likes, and order by the creation date in descending order.
 
-By using the IsOwnerOrReadOnly permission class, only the owner of the article will have permission to update or delete the article information, while other users will only have read-only access.
+- The ArticleDetail view uses the ArticleSerializer for serializing and deserializing article data, just like the ArticleList view.
 
-Overall, the ArticleDetail view provides the necessary functionality for retrieving, updating, and deleting a specific article while ensuring that only the owner of the article can modify its data.
+- The permission classes used for this view ensure that only the owner of the article can update or delete its information. This is achieved through the IsOwnerOrReadOnly permission class, which allows read-only access to anyone but requires the owner's authentication for write operations.
+
+By utilizing the ArticleDetail view, users can view detailed information about a specific article, update its data if they are the owner, and delete the article if necessary.
 
 </details>
 
 <details>
     <summary style="font-weight:bold">Comment View</summary>
+
+### CommentList
+
+The CommentList view is a view that provides the necessary functionality to list and create comments. It inherits from generics.ListCreateAPIView, which is a generic view provided by the Django REST Framework.
+
+#### Features
+
+- List out all the comments:
+  Inheriting from generics.ListCreateAPIView provides the necessary functionality to list all comments. The queryset is defined to fetch comments from the database.
+
+- Option to create a new comment if logged in with owner = request.user:
+  Authenticated users can create new comments by making a POST request to this view. The perform_create method is overridden to automatically set the owner field of the created comment to the authenticated user (request.user).
+
+- The CommentList view uses the CommentSerializer for serializing and deserializing comment data.
+
+- The permission classes used for this view allow authenticated users to perform read (list) operations but require authentication for write (create) operations. This is specified by permissions.IsAuthenticatedOrReadOnly.
+
+- The CommentPagination class is used for pagination, limiting the number of comments displayed per page. This differes from the pagination set in the settings as the default for other views.
+
+- Filtering based on the article field is enabled using the DjangoFilterBackend. The comments can be filtered based on the article they belong to. This allows them to be assigned to a specific article page.
+
+By utilizing the CommentList view, users can efficiently list comments, create new comments if authenticated.
+
+### CommentDetail
+
+The CommentDetail is a view that provides the necessary functionality to retrieve, update, and delete a specific comment. It inherits from generics.RetrieveUpdateDestroyAPIView, which is a generic view provided by the Django REST Framework.
+
+#### Features
+
+- Detail the specifically requested comment:
+  Inheriting from generics.RetrieveUpdateDestroyAPIView provides the necessary functionality to retrieve a specific comment. The queryset is defined to fetch the requested comment from the database.
+
+- The CommentDetail view uses the CommentDetailSerializer for serializing and deserializing comment data, which includes the associated article in a read-only format.
+
+- The permission classes used for this view ensure that only the owner of the comment can update or delete its information. This is achieved through the IsOwnerOrReadOnly permission class, which allows read-only access to anyone but requires the owner's authentication for write operations.
+
+By utilizing the CommentDetail view, users can view detailed information about a specific comment, update its data if they are the owner, and delete the comment if necessary.
+
+</details>
+
+<details>
+    <summary style="font-weight:bold">Profile View</summary>
+
+### ProfileList
+
+The ProfileList is a view that provides the necessary functionality to list profiles. It inherits from generics.ListAPIView, which is a generic view provided by the Django REST Framework.
+
+#### Features
+
+- List out all the profiles:
+  Inheriting from generics.ListAPIView provides the necessary functionality to list all profiles. The queryset is defined to fetch profiles from the database, annotated with counts of articles, followers, following, and languages known, and ordered by the creation date in descending order.
+
+- The ProfileList view uses the ProfileSerializer for serializing profile data.
+
+- No create profile functionality required:
+  The view specifies that no create profile functionality is required since profiles are created automatically through user registration.
+
+- No delete functionality required:
+  Profiles are not meant to be deleted unless the associated user is removed, so no delete functionality is required in this view.
+
+- No permission class required:
+  Since there is no create, update, or delete functionality, no permission class is required for this view.
+
+- Filter order by counts and date:
+  Profiles can be ordered based on the counts and dates of articles, followers, following, and languages known. The available ordering fields are article_count, followed_count, following_count, languages_count, owner**following**created_at, and owner**followed**created_at.
+
+Filter by fieldsets - following, followed, language known:
+Profiles can be filtered based on different fieldsets, including:
+
+- owner\_\_following\_\_followed\_\_profile: Filter profiles based on users who are followed by a specific profile.
+- owner\_\_followed\_\_owner\_\_profile: Filter profiles based on users who are following a specific profile.
+- owner\_\_languages\_\_language: Filter profiles based on the languages known by the profile owner.
+
+By utilizing the ProfileList view, users can efficiently list and filter profiles based on different criteria.
+
+### ProfileDetail
+
+The ProfileDetail is a view that provides the necessary functionality to retrieve and update a specific profile. It inherits from generics.RetrieveUpdateAPIView, which is a generic view provided by the Django REST Framework.
+
+#### Features
+
+- Detail the specifically requested profile:
+  Inheriting from generics.RetrieveUpdateAPIView provides the necessary functionality to retrieve a specific profile. The queryset is defined to fetch the requested profile from the database, annotated with counts of articles, followers, following, and languages known, and ordered by the creation date in descending order.
+
+- The ProfileDetail view uses the ProfileSerializer for serializing and deserializing profile data, just like the ProfileList view.
+
+- The IsOwnerOrReadOnly permission class is used to ensure that only the owner of the profile can update its information. This permission class allows read-only access to anyone but requires the owner's authentication for write operations.
+
+By utilizing the ProfileDetail view, users can view detailed information about a specific profile and update its data if they are the owner.
 
 </details>
 
