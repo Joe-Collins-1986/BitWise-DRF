@@ -249,16 +249,12 @@ For site of the project in GitHub detailing the completed User Stories for the b
 <details>
     <summary style="font-weight:bold">Language Model</summary>
 
-Certainly! Here's the markdown table representing the Language model:
-
-sql
-Copy code
-| Field Name | Field Type | Description |
-|-------------|-----------------------------|------------------------------------------------|
-| owner | ForeignKey (User) | User who owns the language experience |
-| language | CharField (max_length=25) | Name of the language |
-| confidence | IntegerField | Confidence level in the language (1-100) |
-| used_since | DateField (null=True) | Date when the language started being used |
+| Field Name | Field Type                | Description                               |
+| ---------- | ------------------------- | ----------------------------------------- |
+| owner      | ForeignKey (User)         | User who owns the language experience     |
+| language   | CharField (max_length=25) | Name of the language                      |
+| confidence | IntegerField              | Confidence level in the language (1-100)  |
+| used_since | DateField (null=True)     | Date when the language started being used |
 
 </details>
 
@@ -292,8 +288,6 @@ The ArticleList is a view that provides the necessary functionality to list and 
 - The permission classes used for this view allow authenticated users to perform read (list) operations but require authentication for write (create) operations. This is specified by permissions.IsAuthenticatedOrReadOnly.
 
 - The perform_create method is overridden to automatically set the owner field of the created article to the authenticated user (request.user).
-
-Added filtering functionality provided by the DjangoFilterBackend.
 
 - Add search filter against article owner and article title:
   Articles can be searched based on the article owner (owner\_\_username) and article title (article_title). The search functionality is provided by the filters.SearchFilter backend.
@@ -394,7 +388,7 @@ The ProfileList is a view that provides the necessary functionality to list prof
   Since there is no create, update, or delete functionality, no permission class is required for this view.
 
 - Filter order by counts and date:
-  Profiles can be ordered based on the counts and dates of articles, followers, following, and languages known. The available ordering fields are article_count, followed_count, following_count, languages_count, owner**following**created_at, and owner**followed**created_at.
+  Profiles can be ordered based on the counts and dates of articles, followers, following, and languages known. The available ordering fields are article_count, followed_count, following_count, languages_count, owner\_\_following\_\_created_at, and owner\_\_followed\_\_created_at.
 
 Filter by fieldsets - following, followed, language known:
 Profiles can be filtered based on different fieldsets, including:
@@ -419,6 +413,136 @@ The ProfileDetail is a view that provides the necessary functionality to retriev
 - The IsOwnerOrReadOnly permission class is used to ensure that only the owner of the profile can update its information. This permission class allows read-only access to anyone but requires the owner's authentication for write operations.
 
 By utilizing the ProfileDetail view, users can view detailed information about a specific profile and update its data if they are the owner.
+
+</details>
+
+<details>
+    <summary style="font-weight:bold">Follower View</summary>
+
+### FollowerList
+
+The FollowerList is a view that handles the listing and creation of followers. It inherits from generics.ListCreateAPIView, which is a generic view provided by the Django REST Framework.
+
+#### Features:
+
+- List out all the followers:
+  The FollowerList view lists all the followers by fetching the follower objects from the database. The queryset is defined to retrieve all instances of the Follower model.
+
+- Option to create a new follower object if logged in with owner = request.user:
+  Authenticated users can create a new follower object. The perform_create method is overridden to set the owner field of the created follower to the authenticated user (request.user).
+
+- The FollowerList view uses the FollowerSerializer for serializing and deserializing follower data.
+
+- The permission classes used for this view allows unauthenticated users to perform read operations only (IsAuthenticatedOrReadOnly).
+
+By utilizing the FollowerList view, users can list all the followers and create new follower objects if they are authenticated.
+
+### FollowerDetail
+
+The FollowerDetail is a view that handles the retrieval and deletion of a specific follower. It inherits from generics.RetrieveDestroyAPIView, a generic view provided by the Django REST Framework.
+
+#### Features:
+
+- Detail the specifically requested follower:
+  The FollowerDetail view retrieves and displays detailed information about a specific follower. The queryset is defined to fetch the requested follower from the database.
+
+- Uses the same Follower serializer:
+  The FollowerDetail view uses the same FollowerSerializer for serializing and deserializing follower data, just like the FollowerList view.
+
+- Uses IsOwnerOrReadOnly tailored permission class:
+  The permission_classes attribute is set to [IsOwnerOrReadOnly], which ensures that only the owner of the follower object can delete it. This permission class allows read-only access to anyone but requires the owner's authentication for write (delete) operations.
+
+- No need for update; followers work by deleting and creating a new follower if required:
+  The FollowerDetail view does not support update operations. Instead, to update a follower, a new follower object needs to be created while deleting the existing one if necessary.
+
+By utilizing the FollowerDetail view, users can retrieve detailed information about a specific follower and delete it if they are the owner.
+
+</details>
+
+<details>
+    <summary style="font-weight:bold">Language View</summary>
+
+### LanguageList
+
+The LanguageList is a view that handles the listing and creation of languages. It inherits from generics.ListCreateAPIView, a generic view provided by the Django REST Framework.
+
+#### Features:
+
+- List out all the languages:
+  The LanguageList view lists all the languages by fetching the language objects from the database. The queryset is defined to retrieve all instances of the Language model.
+
+- Option to create a new language if logged in with owner = request.user:
+  Authenticated users can create a new language object. The perform_create method is overridden to set the owner field of the created language to the authenticated user (request.user).
+
+- The LanguageList view uses the LanguageSerializer for serializing and deserializing language data.
+
+- The permission classes used for this view allows unauthenticated users to perform read operations (IsAuthenticatedOrReadOnly).
+
+- Filter backend for owner\_\_profile:
+  The LanguageList view uses the DjangoFilterBackend for filtering languages based on the owner's profile. The filter_backends attribute is set to [DjangoFilterBackend], and the filterset_fields attribute is set to ['owner\_\_profile']. This allows languages to be assigned to the profile page of the language owner.
+
+By utilizing the LanguageList view, users can list all the languages, create new language objects if they are authenticated.
+
+### LanguageDetail
+
+The LanguageDetail is a view that handles the retrieval, update, and deletion of a specific language. It inherits from generics.RetrieveUpdateDestroyAPIView, a generic view provided by the Django REST Framework.
+
+#### Features:
+
+- Detail the specifically requested language:
+  The LanguageDetail view retrieves and displays detailed information about a specific language. The queryset is defined to fetch the requested language from the database.
+
+- Uses the LanguageDetailSerializer:
+  The LanguageDetail view uses the LanguageDetailSerializer for serializing and deserializing language data.
+
+- Uses IsOwnerOrReadOnly tailored permission class:
+  The permission_classes attribute is set to [IsOwnerOrReadOnly], which ensures that only the owner of the language object can update or delete its information. This permission class allows read-only access to anyone but requires the owner's authentication for write (update and delete) operations.
+
+By utilizing the LanguageDetail view, users can view detailed information about a specific language, update its data if they are the owner, and delete the language if necessary.
+
+</details>
+
+<details>
+    <summary style="font-weight:bold">Like View</summary>
+
+### LikeList
+
+The LikeList is a view that handles the listing and creation of likes. It inherits from generics.ListCreateAPIView, a generic view provided by the Django REST Framework.
+
+#### Features:
+
+- List out all the likes:
+  The LikeList view lists all the likes by fetching the like objects from the database. The queryset is defined to retrieve all instances of the Like model.
+
+- Option to create a new like if logged in with owner = request.user:
+  Authenticated users can create a new like object. The perform_create method is overridden to set the owner field of the created like to the authenticated user (request.user).
+
+- The LikeList view uses the LikeSerializer for serializing and deserializing like data.
+
+- The permission classes used for this view allows unauthenticated users to perform read operations (IsAuthenticatedOrReadOnly).
+
+By utilizing the LikeList view, users can list all the likes and create new like objects if they are authenticated.
+
+### LikeDetail
+
+The LikeDetail view is a Django view that handles the retrieval and deletion of a specific like. It inherits from generics.RetrieveDestroyAPIView, a generic view provided by the Django REST Framework.
+
+#### Features:
+
+- Detail the specifically requested like:
+  The LikeDetail view retrieves and displays detailed information about a specific like. The queryset is defined to fetch the requested like from the database.
+
+- Uses the same Like serializer:
+  The LikeDetail view uses the same LikeSerializer for serializing and deserializing like data, just like the LikeList view.
+
+- Uses IsOwnerOrReadOnly tailored permission class:
+  The permission_classes attribute is set to [IsOwnerOrReadOnly], which ensures that only the owner of the like object can delete it. This permission class allows read-only access to anyone but requires the owner's authentication for write (delete) operations.
+
+- No need for update; likes work by deleting and creating a new like if required:
+
+- The LikeDetail view does not support update operations. Instead, to update a like, a new like object needs to be created while deleting the existing one if necessary.
+
+By utilizing the LikeDetail view, users can retrieve detailed information about a specific like and delete it if they are the owner.
 
 </details>
 
