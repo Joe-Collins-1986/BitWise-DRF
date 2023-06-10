@@ -182,11 +182,11 @@ If you have a LucidChart account, you can also view this functions flow [here](h
 
 An Agile methodology was applied to the development and implementation of this project.
 
-The project development as a whole was was run in multiple iterations/sprints each targeting a number of User Stories. However, due to the relience of the frontend development on the API the first itteration/sprint was assigned to the Backend in it's entirety.
+The project development as a whole was was run in multiple iterations/sprints each targeting a number of User Stories. However, due to the relience of the frontend development on the API the first iteration/sprint was assigned to the Backend in it's entirety.
 
-Each User Story was moved out of a backlog and assigned to the iteration with a priority label (Must Have, Should Have, Could Have).
+Each User Story was moved out of a backlog and assigned to the iteration with a priority label (Must Have, Should Have, Could Have). **Note:** Due the completion of all userstories within the iteration assinged deadline there was no reason to move any of the user stories back to Backlog and generate a following backend iteration with revised priority labels.
 
-To manage the Agile backend iteration I used the projects function within my GitHub account, pulling User Stories into a KanBan Board. (Links to each project iteration detailed in the iteration breakdown below.)
+To manage the Agile backend iteration I used the projects function within my GitHub account, pulling User Stories into a KanBan Board.
 
 For site of the project in GitHub detailing the completed User Stories for the backend iteration please click [here](https://github.com/users/Joe-Collins-1986/projects/9).
 
@@ -274,6 +274,61 @@ Copy code
 </details>
 
 ## Views
+
+<details>
+    <summary style="font-weight:bold">Article View</summary>
+
+### ArticleList
+
+The ArticleList view is a Django view that provides the necessary functionality to list and create articles. It inherits from generics.ListCreateAPIView, which is a generic view provided by the Django REST Framework.
+
+Features
+
+- List out all the articles:
+  Inheriting from generics.ListCreateAPIView provides the necessary functionality to list all articles. The queryset is defined to fetch articles from the database, annotated with counts of comments and likes, and ordered by the creation date in descending order.
+
+- The ArticleList view uses the ArticleSerializer for serializing and deserializing article data.
+
+- The permission classes used for this view allow authenticated users to perform read (list) operations but require authentication for write (create) operations. This is specified by permissions.IsAuthenticatedOrReadOnly.
+
+- The perform_create method is overridden to automatically set the owner field of the created article to the authenticated user (request.user).
+
+Added filtering functionality provided by the DjangoFilterBackend.
+
+- Add search filter against article owner and article title:
+  Articles can be searched based on the article owner (owner\_\_username) and article title (article_title). The search functionality is provided by the filters.SearchFilter backend.
+
+- Filter order by counts and date of likes and comments:
+  Articles can be ordered based on the counts and dates of likes and comments. The ordering fields available are comments_count and likes_count. The ordering functionality is provided by the filters.OrderingFilter backend.
+
+- Filter by fieldsets - following, followed, article language, profile:
+  Articles can be filtered based on different fieldsets, including:
+
+  - owner**followed**owner\_\_profile: Filter articles based on the profiles of users who are followed by the owner of the article.
+  - likes**owner**profile: Filter articles based on the profiles of users who have liked the article.
+  - owner\_\_profile: Filter articles based on the profile of the article owner.
+  - primary_language: Filter articles based on the primary language of the article.
+
+By utilizing the ArticleList view, users can efficiently list, create, search, order, and filter articles based on various criteria.
+
+### ArticleDetail
+
+The same Article serializer_class and permission_classes are used used for this view, and the permission_classes attribute sets the permission classes, with IsOwnerOrReadOnly being the only permission class defined.
+
+As with the ArticleList, the ArticleDetail view also annotates the queryset with counts of comments and likes, and orders the queryset by the creation date in descending order.
+
+The serializer_class specifies the serializer to use for this view, and the permission_classes attribute sets the permission classes, with IsOwnerOrReadOnly being the only permission class defined.
+
+By using the IsOwnerOrReadOnly permission class, only the owner of the article will have permission to update or delete the article information, while other users will only have read-only access.
+
+Overall, the ArticleDetail view provides the necessary functionality for retrieving, updating, and deleting a specific article while ensuring that only the owner of the article can modify its data.
+
+</details>
+
+<details>
+    <summary style="font-weight:bold">Comment View</summary>
+
+</details>
 
 ## Serializers
 
