@@ -546,7 +546,37 @@ This view can be used to retrieve detailed information about a specific like and
 
 </details>
 
+<details>
+    <summary style="font-weight:bold">Logout View</summary>
+
+The Logout view was added under the Code Institute instructions to resolve a known issue with the dj-rest-auth for loggin users out.
+
+Features:
+
+- Sets both cookies to an empty string and pass additional attributes like secure, httponly and samesite. (excerpt from CI Django REST Framework tutorial)
+
+</details>
+
 ## Serializers
+
+<details>
+    <summary style="font-weight:bold">Current User Serializer</summary>
+
+### Current User Serializer
+
+The CurrentUserSerializer extends the UserDetailsSerializer provided by the dj-rest-auth package adding additional fields to include profile information related to the current user.
+
+#### Features:
+
+- profile_id: This field is a read-only field that retrieves the profile ID associated with the current user.
+
+- profile_image: This field is a read-only field that retrieves the URL of the profile image associated with the current user.
+
+The CurrentUserSerializer inherits from UserDetailsSerializer and adds two extra fields to include profile-related information. It includes the fields defined in the parent class and appends the profile_id and profile_image fields to the serialized output.
+
+his serializer can be used to include the profile ID and profile image URL when serializing the details of the current user.
+
+</details>
 
 <details>
     <summary style="font-weight:bold">Article Serializer</summary>
@@ -717,6 +747,17 @@ This serializer can be used to serialize and deserialize Like model data, includ
 </details>
 
 ## Permissons
+
+<details>
+    <summary style="font-weight:bold">IsOwnerOrReadOnly</summary>
+
+### IsOwnerOrReadOnly
+
+The IsOwnerOrReadOnly class is a custom permission class that extends the BasePermission class from rest_framework.permissions.
+
+It allows read-only access to an object for any user, but only allows modification or deletion if the user requesting the action is the owner of the object.
+
+</details>
 
 ## Settings
 
