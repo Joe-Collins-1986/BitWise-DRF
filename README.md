@@ -15,6 +15,7 @@
   - [User Stories](#user-stories)
   - [Priority Matrix](#priority-matrix)
   - [Entity Relationship Diagram](#entity-relationship-diagram)
+  - [Agile Methodology](#agile-methodology)
 - [API Build](#api-build)
   - [Models]
   - [Views]
@@ -177,7 +178,100 @@ If you have a LucidChart account, you can also view this functions flow [here](h
 
 # API Build
 
+## Agile Methodology
+
+An Agile methodology was applied to the development and implementation of this project.
+
+The project development as a whole was was run in multiple iterations/sprints each targeting a number of User Stories. However, due to the relience of the frontend development on the API the first itteration/sprint was assigned to the Backend in it's entirety.
+
+Each User Story was moved out of a backlog and assigned to the iteration with a priority label (Must Have, Should Have, Could Have).
+
+To manage the Agile backend iteration I used the projects function within my GitHub account, pulling User Stories into a KanBan Board. (Links to each project iteration detailed in the iteration breakdown below.)
+
+For site of the project in GitHub detailing the completed User Stories for the backend iteration please click [here](https://github.com/users/Joe-Collins-1986/projects/9).
+
+**Note:** It should be noted that the priority label was in relation to it's prioriry within the iteration, not the project as a whole.
+
 ## Models
+
+<details>
+    <summary style="font-weight:bold">Article Model</summary>
+
+| Field Name       | Field Type                 | Description                             |
+| ---------------- | -------------------------- | --------------------------------------- |
+| owner            | ForeignKey (User)          | User who owns the article               |
+| created_at       | DateTimeField              | Date and time of creation               |
+| updated_at       | DateTimeField              | Date and time of last update            |
+| article_title    | CharField (max_length=255) | Title of the article                    |
+| article_content  | TextField                  | Content of the article                  |
+| primary_language | CharField (max_length=25)  | Primary language of the article         |
+| github_link      | URLField                   | Link to the article's GitHub repository |
+
+</details>
+
+<details>
+    <summary style="font-weight:bold">Comment Model</summary>
+
+| Field Name | Field Type           | Description                          |
+| ---------- | -------------------- | ------------------------------------ |
+| owner      | ForeignKey (User)    | User who owns the comment            |
+| article    | ForeignKey (Article) | Article to which the comment belongs |
+| created_at | DateTimeField        | Date and time of creation            |
+| updated_at | DateTimeField        | Date and time of last update         |
+| body       | TextField            | Content of the comment               |
+
+</details>
+
+<details>
+    <summary style="font-weight:bold">Profile Model</summary>
+
+| Field Name   | Field Type                | Description                                                     |
+| ------------ | ------------------------- | --------------------------------------------------------------- |
+| owner        | OneToOneField (User)      | User who owns the profile                                       |
+| created_at   | DateTimeField             | Date and time of creation                                       |
+| profile_name | CharField (max_length=50) | Name of the profile                                             |
+| bio          | TextField                 | Biography or description of the profile                         |
+| image        | ResizedImageField         | Profile image, resized and stored in specified upload directory |
+
+</details>
+
+<details>
+    <summary style="font-weight:bold">Follower Model</summary>
+
+| Field Name | Field Type        | Description                                        |
+| ---------- | ----------------- | -------------------------------------------------- |
+| owner      | ForeignKey (User) | User who is the owner of the follower relationship |
+| followed   | ForeignKey (User) | User who is being followed by the owner            |
+| created_at | DateTimeField     | Date and time of creation                          |
+
+</details>
+
+<details>
+    <summary style="font-weight:bold">Language Model</summary>
+
+Certainly! Here's the markdown table representing the Language model:
+
+sql
+Copy code
+| Field Name | Field Type | Description |
+|-------------|-----------------------------|------------------------------------------------|
+| owner | ForeignKey (User) | User who owns the language experience |
+| language | CharField (max_length=25) | Name of the language |
+| confidence | IntegerField | Confidence level in the language (1-100) |
+| used_since | DateField (null=True) | Date when the language started being used |
+
+</details>
+
+<details>
+    <summary style="font-weight:bold">Like Model</summary>
+
+| Field Name | Field Type           | Description                 |
+| ---------- | -------------------- | --------------------------- |
+| owner      | ForeignKey (User)    | User who owns the like      |
+| article    | ForeignKey (Article) | Article that is being liked |
+| created_at | DateTimeField        | Date and time of creation   |
+
+</details>
 
 ## Views
 
