@@ -17,10 +17,10 @@
   - [Entity Relationship Diagram](#entity-relationship-diagram)
   - [Agile Methodology](#agile-methodology)
 - [API Build](#api-build)
-  - [Models]
-  - [Views]
-  - [Serializers]
-  - [Permissons]
+  - [Models](#models)
+  - [Views](#views)
+  - [Serializers](#serializers)
+  - [Permissons](#permissons)
   - [Settings]
   - [CRUD - Endpoint Map]
 - [Further Development]
