@@ -303,7 +303,7 @@ The ArticleList is a view that provides the necessary functionality to list and 
   - owner\_\_profile: Filter articles based on the profile of the article owner.
   - primary_language: Filter articles based on the primary language of the article.
 
-By utilizing the ArticleList view, users can efficiently list, create, search, order, and filter articles based on various criteria.
+This view can be used to list, create, search, order, and filter articles based on various criteria.
 
 ### ArticleDetail
 
@@ -318,7 +318,7 @@ The ArticleDetail is a view that provides the necessary functionality to retriev
 
 - The permission classes used for this view ensure that only the owner of the article can update or delete its information. This is achieved through the IsOwnerOrReadOnly permission class, which allows read-only access to anyone but requires the owner's authentication for write operations.
 
-By utilizing the ArticleDetail view, users can view detailed information about a specific article, update its data if they are the owner, and delete the article if necessary.
+This view can be used to view detailed information about a specific article, update its data if they are the owner, and delete the article if necessary.
 
 </details>
 
@@ -345,7 +345,7 @@ The CommentList view is a view that provides the necessary functionality to list
 
 - Filtering based on the article field is enabled using the DjangoFilterBackend. The comments can be filtered based on the article they belong to. This allows them to be assigned to a specific article page.
 
-By utilizing the CommentList view, users can efficiently list comments, create new comments if authenticated.
+This view can be used to list comments and create new comments if authenticated.
 
 ### CommentDetail
 
@@ -360,7 +360,7 @@ The CommentDetail is a view that provides the necessary functionality to retriev
 
 - The permission classes used for this view ensure that only the owner of the comment can update or delete its information. This is achieved through the IsOwnerOrReadOnly permission class, which allows read-only access to anyone but requires the owner's authentication for write operations.
 
-By utilizing the CommentDetail view, users can view detailed information about a specific comment, update its data if they are the owner, and delete the comment if necessary.
+This view can be used to view detailed information about a specific comment, update its data if they are the owner, and delete the comment if necessary.
 
 </details>
 
@@ -397,7 +397,7 @@ Profiles can be filtered based on different fieldsets, including:
 - owner\_\_followed\_\_owner\_\_profile: Filter profiles based on users who are following a specific profile.
 - owner\_\_languages\_\_language: Filter profiles based on the languages known by the profile owner.
 
-By utilizing the ProfileList view, users can efficiently list and filter profiles based on different criteria.
+This view can be used to list and filter profiles based on different criteria.
 
 ### ProfileDetail
 
@@ -412,7 +412,7 @@ The ProfileDetail is a view that provides the necessary functionality to retriev
 
 - The IsOwnerOrReadOnly permission class is used to ensure that only the owner of the profile can update its information. This permission class allows read-only access to anyone but requires the owner's authentication for write operations.
 
-By utilizing the ProfileDetail view, users can view detailed information about a specific profile and update its data if they are the owner.
+This view can be used to view detailed information about a specific profile and update its data if they are the owner.
 
 </details>
 
@@ -435,7 +435,7 @@ The FollowerList is a view that handles the listing and creation of followers. I
 
 - The permission classes used for this view allows unauthenticated users to perform read operations only (IsAuthenticatedOrReadOnly).
 
-By utilizing the FollowerList view, users can list all the followers and create new follower objects if they are authenticated.
+This view can be used to list all the followers and create new follower objects if they are authenticated.
 
 ### FollowerDetail
 
@@ -455,7 +455,7 @@ The FollowerDetail is a view that handles the retrieval and deletion of a specif
 - No need for update; followers work by deleting and creating a new follower if required:
   The FollowerDetail view does not support update operations. Instead, to update a follower, a new follower object needs to be created while deleting the existing one if necessary.
 
-By utilizing the FollowerDetail view, users can retrieve detailed information about a specific follower and delete it if they are the owner.
+This view can be used to retrieve detailed information about a specific follower and delete it if they are the owner.
 
 </details>
 
@@ -481,7 +481,7 @@ The LanguageList is a view that handles the listing and creation of languages. I
 - Filter backend for owner\_\_profile:
   The LanguageList view uses the DjangoFilterBackend for filtering languages based on the owner's profile. The filter_backends attribute is set to [DjangoFilterBackend], and the filterset_fields attribute is set to ['owner\_\_profile']. This allows languages to be assigned to the profile page of the language owner.
 
-By utilizing the LanguageList view, users can list all the languages, create new language objects if they are authenticated.
+This view can be used to list all the languages, create new language objects if they are authenticated.
 
 ### LanguageDetail
 
@@ -498,7 +498,7 @@ The LanguageDetail is a view that handles the retrieval, update, and deletion of
 - Uses IsOwnerOrReadOnly tailored permission class:
   The permission_classes attribute is set to [IsOwnerOrReadOnly], which ensures that only the owner of the language object can update or delete its information. This permission class allows read-only access to anyone but requires the owner's authentication for write (update and delete) operations.
 
-By utilizing the LanguageDetail view, users can view detailed information about a specific language, update its data if they are the owner, and delete the language if necessary.
+This view can be used to view detailed information about a specific language, update its data if they are the owner, and delete the language if necessary.
 
 </details>
 
@@ -521,7 +521,7 @@ The LikeList is a view that handles the listing and creation of likes. It inheri
 
 - The permission classes used for this view allows unauthenticated users to perform read operations (IsAuthenticatedOrReadOnly).
 
-By utilizing the LikeList view, users can list all the likes and create new like objects if they are authenticated.
+This view can be used to list all the likes and create new like objects if they are authenticated.
 
 ### LikeDetail
 
@@ -542,11 +542,184 @@ The LikeDetail view is a Django view that handles the retrieval and deletion of 
 
 - The LikeDetail view does not support update operations. Instead, to update a like, a new like object needs to be created while deleting the existing one if necessary.
 
-By utilizing the LikeDetail view, users can retrieve detailed information about a specific like and delete it if they are the owner.
+This view can be used to retrieve detailed information about a specific like and delete it if they are the owner.
 
 </details>
 
 ## Serializers
+
+<details>
+    <summary style="font-weight:bold">Article Serializer</summary>
+
+### Article Serializer
+
+The ArticleSerializer handles the serialization and deserialization of Article model data.
+
+#### Features:
+
+- owner: The owner field is a read-only field that displays the username of the article owner.
+
+- is_owner: The is_owner field is a SerializerMethodField that returns a boolean indicating whether the authenticated user is the owner of the article.
+
+- profile_id: The profile_id field is a read-only field that displays the ID of the profile associated with the article owner.
+
+- profile_image: The profile_image field is a SerializerMethodField that returns the URL of the profile image associated with the article owner. If the profile or the profile image does not exist, it returns None.
+
+- like_id: The like_id field is a SerializerMethodField that returns the ID of the like object associated with the authenticated user and the article. If the user is not authenticated or has not liked the article, it returns None.
+
+- has_user_commented: The has_user_commented field is a SerializerMethodField that returns a boolean indicating whether the authenticated user has commented on the article.
+
+- current_user_comments_count: The current_user_comments_count field is a SerializerMethodField that returns the count of comments made by the authenticated user on the article.
+
+- updated_at: The updated_at field is a SerializerMethodField that returns the naturaltime difference between the updated_at and created_at fields of the article. If the time difference is less than or equal to 30 seconds, it returns None.
+
+- comments_count: The comments_count field is a read-only field that displays the count of comments associated with the article.
+
+- likes_count: The likes_count field is a read-only field that displays the count of likes associated with the article.
+
+- is_following: The is_following field is a SerializerMethodField that returns a boolean indicating whether the authenticated user is following the article owner.
+
+This serializer can be used to serialize and deserialize Article model data, including additional fields that provide information about the article owner, likes, comments, and more.
+
+</details>
+
+<details>
+    <summary style="font-weight:bold">Comment Serializers</summary>
+
+### Comment Serializer
+
+The CommentSerializer handles the serialization and deserialization of Comment model data.
+
+#### Features:
+
+- owner: The owner field is a read-only field that displays the username of the comment owner.
+
+- is_owner: The is_owner field is a SerializerMethodField that returns a boolean indicating whether the authenticated user is the owner of the comment.
+
+- profile_id: The profile_id field is a read-only field that displays the ID of the profile associated with the comment owner.
+
+- profile_image: The profile_image field is a SerializerMethodField that returns the URL of the profile image associated with the comment owner. If the profile or the profile image does not exist, it returns None.
+
+- created_at: The created_at field is a SerializerMethodField that returns the naturaltime representation of the comment's creation date.
+
+- updated_at: The updated_at field is a SerializerMethodField that returns the naturaltime representation of the comment's last update date.
+
+- updated_at_edited: The updated_at_edited field is a SerializerMethodField that returns "Edited" if the comment has been edited, based on the time difference between the updated_at and created_at fields. If the time difference is less than or equal to 30 seconds, it returns None.
+
+This serializer can be used to serialize and deserialize Comment model data, including additional fields that provide information about the comment owner and timestamps.
+
+### Comment Detail Serializer
+
+The CommentDetailSerializer provides a detailed view of the Comment model and inherits from the CommentSerializer.
+
+#### Features:
+
+- article: The article field is a read-only field that displays the ID of the article associated with the comment.
+
+This serializer can be used to serialize and deserialize detailed Comment model data, including information about the comment owner, timestamps, and the associated article.
+
+</details>
+
+<details>
+    <summary style="font-weight:bold">Profile Serializer</summary>
+
+### Profile Serializer
+
+The ProfileSerializer handles the serialization and deserialization of Profile model data.
+
+#### Features:
+
+- owner: The owner field is a read-only field that displays the username of the profile owner.
+
+- is_owner: The is_owner field is a SerializerMethodField that returns a boolean indicating whether the authenticated user is the owner of the profile.
+
+- following_id: The following_id field is a SerializerMethodField that returns the ID of the follower relationship between the authenticated user and the profile owner. If the user is following the profile, it returns the ID of the follower relationship. Otherwise, it returns None.
+
+- article_count: The article_count field is a read-only field that displays the number of articles associated with the profile.
+
+- followed_count: The followed_count field is a read-only field that displays the number of profiles followed by the profile owner.
+
+- following_count: The following_count field is a read-only field that displays the number of profiles that follow the profile owner.
+
+- languages_count: The languages_count field is a read-only field that displays the number of languages associated with the profile.
+
+This serializer can be used to serialize and deserialize Profile model data, including additional fields that provide information about the profile owner, follower relationship, and various counts.
+
+</details>
+
+<details>
+    <summary style="font-weight:bold">Follower Serializer</summary>
+
+### Follower Serializer
+
+The FollowerSerializer handles the serialization and deserialization of Follower model data.
+
+#### Features:
+
+- owner: The owner field is a read-only field that displays the username of the follower.
+
+- followed_name: The followed_name field is a read-only field that displays the username of the user being followed.
+
+- create: The create method is overridden to validate if a follower relationship already exists between the user and the followed user. If a duplication is detected, a validation error is raised with a tailored error message.
+
+This serializer can be used to serialize and deserialize Follower model data, including the usernames of the follower and the followed user. The serializer also provides a custom validation to prevent duplication of follower relationships.
+
+</details>
+
+<details>
+    <summary style="font-weight:bold">Language Serializer</summary>
+
+### Language Serializer
+
+The LanguageSerializer handles the serialization and deserialization of Language model data.
+
+#### Features:
+
+- owner: The owner field is a read-only field that displays the username of the language owner.
+
+- is_owner: The is_owner field is a SerializerMethodField that returns a boolean value indicating whether the current user is the owner of the language.
+
+- years_exp: The years_exp field is a SerializerMethodField that calculates the number of years of experience in using the language based on the "used_since" date field of the language object.
+
+- validate: The validate method is overridden to check if a language with the same name already exists for the owner. If a duplicate language is found, a validation error is raised with a tailored error message.
+
+This serializer can be used to serialize and deserialize Language model data, including the owner's username, the years of experience in using the language, and perform validation to prevent the creation of duplicate language entries for the same owner.
+
+</details>
+
+<details>
+    <summary style="font-weight:bold">Language Detail Serializer</summary>
+
+### Language Serializer
+
+The LanguageDetailSerializer provides a detailed view of the Language model data. It inherits from the LanguageSerializer and sets the "language" field as read-only.
+
+#### Features:
+
+- language: The language field is a read-only field.
+
+This serializer can be used to retrieve detailed information about a Language object, including the owner's username, years of experience in using the language, and the language itself, which is set to read-only.
+
+</details>
+
+<details>
+    <summary style="font-weight:bold">Like Serializer</summary>
+
+### Like Serializer
+
+The LikeSerializer handles the serialization and deserialization of Like model data.
+
+#### Features:
+
+- owner: The owner field is a read-only field that displays the username of the like owner.
+
+- validate: The validate method is overridden to check if a like already exists between the user and the article. If a duplicate like is found, a validation error is raised with a tailored error message.
+
+- create: The create method is overridden to handle a duplication check when creating a like. If a duplication is identified via an integrity error a validation error is raised with a tailored error message.
+
+This serializer can be used to serialize and deserialize Like model data, including the owner's username, and perform validation to prevent the creation of duplicate likes for the same user and article combination.
+
+</details>
 
 ## Permissons
 
