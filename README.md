@@ -667,7 +667,7 @@ This serializer can be used to serialize and deserialize Follower model data, in
 </details>
 
 <details>
-    <summary style="font-weight:bold">Language Serializer</summary>
+    <summary style="font-weight:bold">Language Serializers</summary>
 
 ### Language Serializer
 
@@ -684,11 +684,6 @@ The LanguageSerializer handles the serialization and deserialization of Language
 - validate: The validate method is overridden to check if a language with the same name already exists for the owner. If a duplicate language is found, a validation error is raised with a tailored error message.
 
 This serializer can be used to serialize and deserialize Language model data, including the owner's username, the years of experience in using the language, and perform validation to prevent the creation of duplicate language entries for the same owner.
-
-</details>
-
-<details>
-    <summary style="font-weight:bold">Language Detail Serializer</summary>
 
 ### Language Serializer
 
