@@ -21,7 +21,6 @@
   - [Views](#views)
   - [Serializers](#serializers)
   - [Permissons](#permissons)
-  - [Settings]
   - [CRUD - Endpoint Map]
 - [Further Development]
 - [Technologies Used]
@@ -34,8 +33,8 @@
   - [Further Testing]
   - [Development Bugs]
   - [Key Learns]
-- [Deployment]
-  - [Deployment Document]
+- [Deployment](#deployment)
+  - [Deployment Document](#deployment-document)
 - [Credits]
   - [Development Resources]
   - [Media and Content Resources]
@@ -182,9 +181,11 @@ If you have a LucidChart account, you can also view this functions flow [here](h
 
 An Agile methodology was applied to the development and implementation of this project.
 
-The project development as a whole was was run in multiple iterations/sprints each targeting a number of User Stories. However, due to the relience of the frontend development on the API the first iteration/sprint was assigned to the Backend in it's entirety.
+The project development as a whole was run in multiple iterations/sprints each targeting a number of User Stories. However, due to the relience of the frontend development on the API the first iteration/sprint was assigned to the Backend in it's entirety.
 
-Each User Story was moved out of a backlog and assigned to the iteration with a priority label (Must Have, Should Have, Could Have). **Note:** Due the completion of all userstories within the iteration assinged deadline there was no reason to move any of the user stories back to Backlog and generate a following backend iteration with revised priority labels.
+Each User Story was moved out of a backlog and assigned to the iteration with a priority label (Must Have, Should Have, Could Have).
+
+**Note:** Due the completion of all userstories within the iteration assigned deadline there was no reason to move any of the user stories back to Backlog and generate a following backend iteration with revised priority labels.
 
 To manage the Agile backend iteration I used the projects function within my GitHub account, pulling User Stories into a KanBan Board.
 
@@ -759,8 +760,6 @@ It allows read-only access to an object for any user, but only allows modificati
 
 </details>
 
-## Settings
-
 ## CRUD - Endpoint Map
 
 To detail the API CRUD functionality in full an API documentation page has been developed [here](https://bitwise-code-blog.herokuapp.com/#)
@@ -809,3 +808,11 @@ For further insight into endpoinds see API ducmentation [link](https://bitwise-c
 - Website used to convert back to excel incase updates required: [here](https://tableconvert.com/markdown-to-excel)
 
 </details>
+
+# Deployment
+
+## Deployment Document
+
+Deployment doumentation found [here](DEPLOYMENT.md).
+
+   <br>
