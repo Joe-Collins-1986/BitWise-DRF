@@ -15,6 +15,9 @@ class ArticleModelTest(TestCase):
         )
 
     def test_str_representation(self):
+        '''
+        str provides expected info
+        '''
         article = Article.objects.get(id=1)
         expected_str = f'{article.id} {article.article_title}'
         self.assertEqual(str(article), expected_str)
