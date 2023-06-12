@@ -21,7 +21,7 @@
   - [Views](#views)
   - [Serializers](#serializers)
   - [Permissons](#permissons)
-  - [CRUD - Endpoint Map]
+  - [CRUD - Endpoint Map](#crud---endpoint-map)
 - [Further Development]
 - [Technologies Used]
   - [Languages Used]
