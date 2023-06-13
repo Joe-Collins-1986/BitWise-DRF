@@ -508,8 +508,9 @@ Serializers:
 
 #### CRUD TESTING IN DEV ENV
 
-| Create                               | ✅  |
+| CRUD Article Testing                 | ✅  |
 | ------------------------------------ | --- |
+| Create                               | ✅  |
 | Read                                 | ✅  |
 | Delete                               | ✅  |
 | Update                               | ✅  |
@@ -530,3 +531,27 @@ Serializers:
 | all articles being followed by profile 1       | ✅ [link](https://bitwise-code-blog.herokuapp.com/articles/?owner__followed__owner__profile=1) |
 | all articles liked by profile 1                | ✅ [link](https://bitwise-code-blog.herokuapp.com/articles/?likes__owner__profile=1)           |
 | all articles written about Python              | ✅ [link](https://bitwise-code-blog.herokuapp.com/articles/?primary_language=Python)           |
+| specific article                               | ✅ [link](https://bitwise-code-blog.herokuapp.com/articles/2/)                                 |
+
+### Comments:
+
+#### CRUD TESTING IN DEV ENV
+
+| CRUD Comment Testing                 | ✅  |
+| ------------------------------------ | --- |
+| Create                               | ✅  |
+| Read                                 | ✅  |
+| Delete                               | ✅  |
+| Update                               | ✅  |
+| Create restricted to authorised user | ✅  |
+| Update & Delete restricted to owner  | ✅  |
+
+#### GET COMMENTS
+
+| Comments                                       | Result                                                                 |
+| ---------------------------------------------- | ---------------------------------------------------------------------- |
+| results returned                               | ✅ [link](https://bitwise-code-blog.herokuapp.com/comments/)           |
+| page filter returns page                       | ✅ [link](https://bitwise-code-blog.herokuapp.com/comments/?page=1)    |
+| invalid page returns "detail": "Invalid page." | ✅ [link](https://bitwise-code-blog.herokuapp.com/comments/?page=9999) |
+| returns comment linked to specific article     | ✅ [link](https://bitwise-code-blog.herokuapp.com/comments/?article=2) |
+| specific comment                               | ✅ [link](https://bitwise-code-blog.herokuapp.com/comments/11/)        |
