@@ -501,3 +501,32 @@ Serializers:
 ---
 
 </details>
+
+## User Testing
+
+### Articles:
+
+#### CRUD TESTING IN DEV ENV
+
+| Create                               | ✅  |
+| ------------------------------------ | --- |
+| Read                                 | ✅  |
+| Delete                               | ✅  |
+| Update                               | ✅  |
+| Create restricted to authorised user | ✅  |
+| Update & Delete restricted to owner  | ✅  |
+
+#### GET ARTICLES
+
+| Articles                                       | Result                                                                                         |
+| ---------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| results returned                               | ✅ [link](https://bitwise-code-blog.herokuapp.com/articles/)                                   |
+| page filter returns page                       | ✅ [link](https://bitwise-code-blog.herokuapp.com/articles/?page=1)                            |
+| invalid page returns "detail": "Invalid page." | ✅ [link](https://bitwise-code-blog.herokuapp.com/articles/?page=9999)                         |
+| search filter works for owner                  | ✅ [link](https://bitwise-code-blog.herokuapp.com/articles/?search=Joe)                        |
+| search filter works for title                  | ✅ [link](https://bitwise-code-blog.herokuapp.com/articles/?search=article)                    |
+| order by comment count                         | ✅ [link](https://bitwise-code-blog.herokuapp.com/articles/?ordering=-comments_count)          |
+| order by likes count                           | ✅ [link](https://bitwise-code-blog.herokuapp.com/articles/?ordering=-likes_count)             |
+| all articles being followed by profile 1       | ✅ [link](https://bitwise-code-blog.herokuapp.com/articles/?owner__followed__owner__profile=1) |
+| all articles liked by profile 1                | ✅ [link](https://bitwise-code-blog.herokuapp.com/articles/?likes__owner__profile=1)           |
+| all articles written about Python              | ✅ [link](https://bitwise-code-blog.herokuapp.com/articles/?primary_language=Python)           |

@@ -809,6 +809,17 @@ For further insight into endpoinds see API ducmentation [link](https://bitwise-c
 
 </details>
 
+# Testing
+
+## Testing Document
+
+Testing documentation found [here](TESTING.md).
+
+## Further Testing
+
+- Each enpoint tested by developer to ensure functionality worked as expected.
+- Issued to Slack community to review and provide feedback on.
+
 # Deployment
 
 ## Deployment Document
