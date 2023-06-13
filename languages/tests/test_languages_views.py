@@ -3,8 +3,6 @@ from django.test import TestCase
 from rest_framework import status
 from languages.models import Language
 
-# from rest_framework.test import APIClient
-
 
 class LanguageViewsTestCase(TestCase):
     def setUp(self):
@@ -45,7 +43,8 @@ class LanguageViewsTestCase(TestCase):
 
     def test_language_detail(self):
         """
-        Test that language detail endpoint returns the details of a specific language.
+        Test that language detail endpoint returns the
+        details of a specific language.
         """
         response = self.client.get(f'/languages/{self.language.id}/')
         self.assertEqual(response.status_code, status.HTTP_200_OK)

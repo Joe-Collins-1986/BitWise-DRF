@@ -46,7 +46,8 @@ class FollowerSerializerTestCase(APITestCase):
 
     def test_create_duplicate_follower(self):
         """
-        Trying to create a duplicate follower object should raise a validation error
+        Trying to create a duplicate follower object
+        should raise a validation error
         """
         self.client.login(username='user1', password='testpassword')
         data = {

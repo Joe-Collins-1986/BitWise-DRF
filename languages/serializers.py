@@ -18,17 +18,19 @@ class LanguageSerializer(serializers.ModelSerializer):
         request = self.context['request']
         return request.user == obj.owner
 
-    def get_years_exp(self, obj):
-        if obj.used_since:
-            today = date.today()
-            years = today.year - obj.used_since.year
-            if (today.month < obj.used_since.month or (today.month ==
-                                                       obj.used_since.month and today.day < obj.used_since.day)):
-                years -= 1
-            if years < 1:
-                return "Less than one year"
-            return years
-        return "None"
+
+def get_years_exp(self, obj):
+    if obj.used_since:
+        today = date.today()
+        years = today.year - obj.used_since.year
+        if (today.month < obj.used_since.month or
+                (today.month == obj.used_since.month and
+                 today.day < obj.used_since.day)):
+            years -= 1
+        if years < 1:
+            return "Less than one year"
+        return years
+    return "None"
 
     def validate(self, attrs):
         language = attrs.get('language')
