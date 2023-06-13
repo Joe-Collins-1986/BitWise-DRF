@@ -35,7 +35,8 @@ class LikeSerializerTestCase(APITestCase):
 
     def test_create_duplicate_like(self):
         '''
-        Trying to create a duplicate like object should raise a validation error
+        Trying to create a duplicate like object should
+        raise a validation error
         '''
         like = Like.objects.create(owner=self.user, article=self.article)
         data = {

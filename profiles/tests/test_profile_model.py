@@ -5,8 +5,10 @@ from profiles.models import Profile
 
 class ProfileModelTest(TestCase):
     def setUp(self):
-        self.user = User.objects.create_user(username='testuser', password='testpass')
-        self.user2 = User.objects.create_user(username='testuser2', password='testpass')
+        self.user = User.objects.create_user(
+            username='testuser', password='testpass')
+        self.user2 = User.objects.create_user(
+            username='testuser2', password='testpass')
 
     def test_str_representation(self):
         '''
@@ -32,4 +34,3 @@ class ProfileModelTest(TestCase):
         self.assertEqual(profiles.count(), 2)
         self.assertEqual(profiles[0].owner, self.user2)
         self.assertEqual(profiles[1].owner, self.user)
-

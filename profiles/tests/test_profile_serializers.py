@@ -6,8 +6,10 @@ from followers.models import Follower
 
 class ProfileSerializerTestCase(APITestCase):
     def setUp(self):
-        self.user = User.objects.create_user(username='user1', password='testpassword')
-        self.user2 = User.objects.create_user(username='user2', password='testpassword')
+        self.user = User.objects.create_user(
+            username='user1', password='testpassword')
+        self.user2 = User.objects.create_user(
+            username='user2', password='testpassword')
         self.profile = Profile.objects.get(id=1)
 
     def test_owner_field(self):
@@ -36,16 +38,19 @@ class ProfileSerializerTestCase(APITestCase):
 
     def test_following_id_field(self):
         """
-        following_id field shows the follower ID if the user is following the profile, else null
+        following_id field shows the follower ID if
+        the user is following the profile, else null
         """
-        follower = Follower.objects.create(owner=self.user, followed=self.profile.owner)
+        follower = Follower.objects.create(
+            owner=self.user, followed=self.profile.owner)
         self.client.login(username="user1", password="testpassword")
         response = self.client.get(f'/profiles/{self.profile.id}/')
         self.assertEqual(response.data["following_id"], follower.id)
 
     def test_following_id_field_null(self):
         """
-        following_id field is null if the user is not following the profile
+        following_id field is null if the user is not
+        following the profile
         """
         self.client.login(username="user1", password="testpassword")
         response = self.client.get(f'/profiles/{self.profile.id}/')

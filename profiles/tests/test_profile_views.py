@@ -3,9 +3,11 @@ from rest_framework.test import APITestCase
 from rest_framework import status
 from profiles.models import Profile
 
+
 class ProfileListTestCase(APITestCase):
     def setUp(self):
-        self.user = User.objects.create_user(username='testuser', password='testpassword')
+        self.user = User.objects.create_user(
+            username='testuser', password='testpassword')
 
     def test_profile_list(self):
         '''
@@ -32,9 +34,11 @@ class ProfileListTestCase(APITestCase):
 
     # Add more test cases for filtering and ordering as desired
 
+
 class ProfileDetailTestCase(APITestCase):
     def setUp(self):
-        self.user = User.objects.create_user(username='testuser', password='testpassword')
+        self.user = User.objects.create_user(
+            username='testuser', password='testpassword')
         self.profile = Profile.objects.get(id=1)
 
     def test_profile_detail(self):
