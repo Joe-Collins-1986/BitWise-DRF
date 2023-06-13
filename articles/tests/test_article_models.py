@@ -5,7 +5,8 @@ from articles.models import Article
 
 class ArticleModelTest(TestCase):
     def setUp(self):
-        user = User.objects.create_user(username='testuser', password='testpass')
+        user = User.objects.create_user(
+            username='testuser', password='testpass')
         Article.objects.create(
             owner=user,
             article_title='Test Article',
@@ -26,7 +27,8 @@ class ArticleModelTest(TestCase):
         '''
         articles are ordered by created_at in descending order
         '''
-        user = User.objects.create_user(username='anotheruser', password='testpass')
+        user = User.objects.create_user(
+            username='anotheruser', password='testpass')
         article1 = Article.objects.create(
             owner=user,
             article_title='Article 1',

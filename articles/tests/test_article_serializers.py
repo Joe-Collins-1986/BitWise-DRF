@@ -10,7 +10,8 @@ from django.utils import timezone
 
 class ArticleSerializerTestCase(APITestCase):
     def setUp(self):
-        self.user = User.objects.create_user(username='testuser', password='testpassword')
+        self.user = User.objects.create_user(
+            username='testuser', password='testpassword')
         self.article = Article.objects.create(
             owner=self.user,
             article_title='Test Article',
@@ -130,4 +131,3 @@ class ArticleSerializerTestCase(APITestCase):
         Follower.objects.create(owner=self.user, followed=self.user)
         response = self.client.get(f'/articles/{self.article.id}/')
         self.assertTrue(response.data["is_following"])
-

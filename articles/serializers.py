@@ -5,6 +5,7 @@ from comments.models import Comment
 from likes.models import Like
 from datetime import timedelta
 
+
 class ArticleSerializer(serializers.ModelSerializer):
     """
     - Serializer for the Article model
@@ -39,41 +40,39 @@ class ArticleSerializer(serializers.ModelSerializer):
     def get_is_owner(self, obj):
         request = self.context['request']
         return request.user == obj.owner
-    
+
     def get_updated_at(self, obj):
         time_diff = obj.updated_at - obj.created_at
         if time_diff <= timedelta(seconds=30):
             return None
         return naturaltime(obj.updated_at)
-    
+
     def get_profile_image(self, obj):
         profile = obj.owner.profile
         if profile and profile.image:
             return profile.image.url
         return None
-    
+
     def get_like_id(self, obj):
-        user=self.context['request'].user
+        user = self.context['request'].user
         if user.is_authenticated:
             like = Like.objects.filter(
                 owner=user, article=obj
             ).first()
             return like.id if like else None
         return None
-    
+
     def get_has_user_commented(self, obj):
         user = self.context['request'].user
         if user.is_authenticated:
             return obj.comments.filter(owner=user).exists()
         return False
-    
+
     def get_current_user_comments_count(self, obj):
         user = self.context['request'].user
         if user.is_authenticated:
             return Comment.objects.filter(owner=user, article=obj).count()
         return 0
-    
-    
 
     class Meta:
         model = Article

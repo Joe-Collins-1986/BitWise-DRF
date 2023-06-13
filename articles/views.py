@@ -5,6 +5,7 @@ from .models import Article
 from .serializers import ArticleSerializer
 from django_filters.rest_framework import DjangoFilterBackend
 
+
 class ArticleList(generics.ListCreateAPIView):
     """
     - List out all the articles
@@ -17,9 +18,9 @@ class ArticleList(generics.ListCreateAPIView):
     serializer_class = ArticleSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Article.objects.annotate(
-            comments_count = Count('comments', distinct=True),
-            likes_count = Count('likes', distinct=True)
-        ).order_by('-created_at')
+        comments_count=Count('comments', distinct=True),
+        likes_count=Count('likes', distinct=True)
+    ).order_by('-created_at')
 
     filter_backends = [
         filters.SearchFilter,
@@ -58,6 +59,6 @@ class ArticleDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = ArticleSerializer
     permission_classes = [IsOwnerOrReadOnly]
     queryset = Article.objects.annotate(
-            comments_count = Count('comments', distinct=True),
-            likes_count = Count('likes', distinct=True)
-        ).order_by('-created_at')
+        comments_count=Count('comments', distinct=True),
+        likes_count=Count('likes', distinct=True)
+    ).order_by('-created_at')

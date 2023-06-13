@@ -4,10 +4,13 @@ from rest_framework import status
 from articles.models import Article
 from articles.serializers import ArticleSerializer
 
+
 class ArticleListTestCase(APITestCase):
     def setUp(self):
-        self.user = User.objects.create_user(username='testuser', password='testpassword')
-        self.article = Article.objects.create(article_title='Test Article', owner=self.user)
+        self.user = User.objects.create_user(
+            username='testuser', password='testpassword')
+        self.article = Article.objects.create(
+            article_title='Test Article', owner=self.user)
 
     def test_article_list(self):
         '''
@@ -36,11 +39,14 @@ class ArticleListTestCase(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
         self.assertEqual(Article.objects.count(), 1)
 
+
 class ArticleDetailTestCase(APITestCase):
 
     def setUp(self):
-        self.user = User.objects.create_user(username='testuser', password='testpassword')
-        self.article = Article.objects.create(article_title='Test Article', owner=self.user)
+        self.user = User.objects.create_user(
+            username='testuser', password='testpassword')
+        self.article = Article.objects.create(
+            article_title='Test Article', owner=self.user)
 
     def test_article_detail(self):
         '''
@@ -86,4 +92,3 @@ class ArticleDetailTestCase(APITestCase):
         response = self.client.delete(f'/articles/{self.article.id}/')
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
         self.assertTrue(Article.objects.filter(id=self.article.id).exists())
-
