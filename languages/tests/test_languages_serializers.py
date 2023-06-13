@@ -31,7 +31,7 @@ class LanguageSerializerTestCase(APITestCase):
             owner=self.user,
             language='JavaScript',
             confidence= 50,
-            used_since=timezone.now()- timedelta(days=12 * 31),
+            used_since=timezone.now()- timedelta(days=19 * 31),
             )
     
 
