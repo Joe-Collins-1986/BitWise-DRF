@@ -14,11 +14,15 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='language',
             name='confidence',
-            field=models.IntegerField(validators=[django.core.validators.MinValueValidator(1), django.core.validators.MaxValueValidator(100)]),
+            field=models.IntegerField(
+                validators=[
+                    django.core.validators.MinValueValidator(1),
+                    django.core.validators.MaxValueValidator(100)]),
         ),
         migrations.AlterField(
             model_name='language',
             name='used_since',
-            field=models.DateField(null=True),
+            field=models.DateField(
+                null=True),
         ),
     ]

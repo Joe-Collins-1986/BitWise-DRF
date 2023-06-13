@@ -10,7 +10,10 @@ class Like(models.Model):
     Create a unique link between owner and article to stop repeaded likes
     """
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
-    article = models.ForeignKey(Article, on_delete=models.CASCADE, related_name="likes")
+    article = models.ForeignKey(
+        Article,
+        on_delete=models.CASCADE,
+        related_name="likes")
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:

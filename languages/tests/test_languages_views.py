@@ -5,11 +5,15 @@ from languages.models import Language
 
 # from rest_framework.test import APIClient
 
+
 class LanguageViewsTestCase(TestCase):
     def setUp(self):
-        self.user = User.objects.create_user(username='testuser', password='testpassword')
-        self.user2 = User.objects.create_user(username='testuser2', password='testpassword')
-        self.language = Language.objects.create(owner=self.user, language='Python', confidence=80)
+        self.user = User.objects.create_user(
+            username='testuser', password='testpassword')
+        self.user2 = User.objects.create_user(
+            username='testuser2', password='testpassword')
+        self.language = Language.objects.create(
+            owner=self.user, language='Python', confidence=80)
 
     def test_language_list(self):
         """

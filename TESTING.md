@@ -14,10 +14,11 @@ Back to Readme [here](README.md)
 
 ## Python Unit Testing
 
-Unit Testing coverage rounded to 100%.
+Unit Testing coverage to 100%.
 ![Summary Unit Tests](readme-assets/unit_testing/summary-report.png)
 
-<br>
+(excluding settings and manage.py files)
+
 See below for details on each app:
 
 <details>
@@ -154,6 +155,108 @@ Views:
 Serializers:
 
 ![Serializers](readme-assets/pep8/articles/serializers.png)
+
+---
+
+</details>
+
+<details>
+      <summary style="font-weight:bold">BitWise</summary>
+<br>
+
+Permissons:
+
+![Permissons](readme-assets/pep8/bitwise/permissions.png)
+
+---
+
+Views:
+
+![Views](readme-assets/pep8/bitwise/views.png)
+
+---
+
+Serializers:
+
+![Serializers](readme-assets/pep8/bitwise/serializers.png)
+
+---
+
+URLs:
+
+![URLs](readme-assets/pep8/bitwise/urls.png)
+
+---
+
+</details>
+
+<details>
+      <summary style="font-weight:bold">BitWise Tests</summary>
+<br>
+
+Views:
+
+![Views](readme-assets/pep8/bitwise-tests/test-views.png)
+
+---
+
+</details>
+
+<details>
+      <summary style="font-weight:bold">Comments</summary>
+<br>
+
+Admin:
+
+![Admin](readme-assets/pep8/comments/admin.png)
+
+---
+
+Models:
+
+![Models](readme-assets/pep8/comments/models.png)
+
+---
+
+Views:
+
+![Views](readme-assets/pep8/comments/views.png)
+
+---
+
+Serializers:
+
+![Serializers](readme-assets/pep8/comments/serializers.png)
+
+---
+
+URLs:
+
+![URLs](readme-assets/pep8/comments/urls.png)
+
+---
+
+</details>
+
+<details>
+      <summary style="font-weight:bold">Comments Tests</summary>
+<br>
+
+Models:
+
+![Models](readme-assets/pep8/comments-tests/test-models.png)
+
+---
+
+Views:
+
+![Views](readme-assets/pep8/comments-tests/test-views.png)
+
+---
+
+Serializers:
+
+![Serializers](readme-assets/pep8/comments-tests/test-serializers.png)
 
 ---
 

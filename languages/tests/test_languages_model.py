@@ -5,7 +5,8 @@ from languages.models import Language
 
 class LanguageModelTest(TestCase):
     def setUp(self):
-        self.user = User.objects.create_user(username='testuser', password='testpass')
+        self.user = User.objects.create_user(
+            username='testuser', password='testpass')
         Language.objects.create(
             owner=self.user,
             language='Python',

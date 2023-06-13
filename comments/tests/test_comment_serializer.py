@@ -5,9 +5,11 @@ from comments.models import Comment
 from datetime import timedelta
 from django.utils import timezone
 
+
 class CommentSerializerTestCase(APITestCase):
     def setUp(self):
-        self.user = User.objects.create_user(username='testuser', password='testpassword')
+        self.user = User.objects.create_user(
+            username='testuser', password='testpassword')
         self.article = Article.objects.create(
             owner=self.user,
             article_title='Test Article',
@@ -15,7 +17,8 @@ class CommentSerializerTestCase(APITestCase):
             primary_language='',
             github_link='',
         )
-        self.comment = Comment.objects.create(owner=self.user, article=self.article, body='Test Comment')
+        self.comment = Comment.objects.create(
+            owner=self.user, article=self.article, body='Test Comment')
 
         self.comment.created_at = timezone.now() - timedelta(seconds=35)
         self.comment.updated_at = timezone.now()
@@ -86,7 +89,9 @@ class CommentSerializerTestCase(APITestCase):
 
     def test_get_updated_at_edited_field(self):
         '''
-        updated_at_edited field is "Edited" if time difference is greater than 30 seconds, else None
+        updated_at_edited field is "Edited"
+        if time difference is greater than
+        30 seconds, else None
         '''
         response = self.client.get(f'/comments/{self.comment.id}/')
         self.assertEqual(response.data["updated_at_edited"], "Edited")

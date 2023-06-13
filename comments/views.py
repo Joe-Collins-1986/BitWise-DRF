@@ -5,8 +5,10 @@ from .serializers import CommentDetailSerializer, CommentSerializer
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.pagination import PageNumberPagination
 
+
 class CommentPagination(PageNumberPagination):
     page_size = 10
+
 
 class CommentList(generics.ListCreateAPIView):
     """

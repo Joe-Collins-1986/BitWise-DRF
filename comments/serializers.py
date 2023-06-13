@@ -3,6 +3,7 @@ from rest_framework import serializers
 from .models import Comment
 from datetime import timedelta
 
+
 class CommentSerializer(serializers.ModelSerializer):
     """
     - Serializer for the Comment model
@@ -24,19 +25,19 @@ class CommentSerializer(serializers.ModelSerializer):
     def get_is_owner(self, obj):
         request = self.context['request']
         return request.user == obj.owner
-    
+
     def get_created_at(self, obj):
         return naturaltime(obj.created_at)
-    
+
     def get_updated_at(self, obj):
         return naturaltime(obj.updated_at)
-    
+
     def get_updated_at_edited(self, obj):
         time_diff = obj.updated_at - obj.created_at
         if time_diff <= timedelta(seconds=30):
             return None
         return "Edited"
-    
+
     def get_profile_image(self, obj):
         profile = obj.owner.profile
         if profile and profile.image:
@@ -50,6 +51,7 @@ class CommentSerializer(serializers.ModelSerializer):
             'created_at', 'updated_at', 'updated_at_edited', 'body',
             'is_owner', 'profile_id', 'profile_image',
         ]
+
 
 class CommentDetailSerializer(CommentSerializer):
     """

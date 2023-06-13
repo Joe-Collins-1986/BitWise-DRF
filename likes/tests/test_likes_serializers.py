@@ -3,10 +3,15 @@ from django.contrib.auth.models import User
 from articles.models import Article
 from likes.models import Like
 
+
 class LikeSerializerTestCase(APITestCase):
     def setUp(self):
-        self.user = User.objects.create_user(username='user1', password='testpassword')
-        self.article = Article.objects.create(owner=self.user, article_title='Test Article', article_content='This is a test article.')
+        self.user = User.objects.create_user(
+            username='user1', password='testpassword')
+        self.article = Article.objects.create(
+            owner=self.user,
+            article_title='Test Article',
+            article_content='This is a test article.')
 
     def test_owner_field(self):
         '''

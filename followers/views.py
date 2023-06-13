@@ -3,6 +3,7 @@ from bitwise.permissions import IsOwnerOrReadOnly
 from .models import Follower
 from .serializers import FollowerSerializer
 
+
 class FollowerList(generics.ListCreateAPIView):
     """
     - List out all the followers
@@ -23,7 +24,7 @@ class FollowerDetail(generics.RetrieveDestroyAPIView):
     - Uses same Follower serializer
     - Uses IsOwnerOrReadOnly tailored permission class
     to ensure only owner can delete follower
-    - No need for update, followers works by deleting and 
+    - No need for update, followers works by deleting and
     creating a new follower if required
     """
     serializer_class = FollowerSerializer

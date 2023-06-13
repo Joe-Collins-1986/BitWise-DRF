@@ -6,35 +6,36 @@ from rest_framework import status
 from django.utils import timezone
 from datetime import timedelta
 
+
 class LanguageSerializerTestCase(APITestCase):
     def setUp(self):
-        self.user = User.objects.create_user(username='user1', password='testpassword')
-        self.user2 = User.objects.create_user(username='user2', password='testpassword')
+        self.user = User.objects.create_user(
+            username='user1', password='testpassword')
+        self.user2 = User.objects.create_user(
+            username='user2', password='testpassword')
         self.language = Language.objects.create(
             owner=self.user,
             language='Python',
-            confidence= 90,
+            confidence=90,
             used_since=date(2015, 1, 1),
         )
         self.language2 = Language.objects.create(
             owner=self.user,
             language='JavaScript',
-            confidence= 50,
-            )
+            confidence=50,
+        )
         self.language3 = Language.objects.create(
             owner=self.user,
             language='JavaScript',
-            confidence= 50,
+            confidence=50,
             used_since=timezone.now(),
-            )
+        )
         self.language4 = Language.objects.create(
             owner=self.user,
             language='JavaScript',
-            confidence= 50,
-            used_since=timezone.now()- timedelta(days=19 * 31),
-            )
-    
-
+            confidence=50,
+            used_since=timezone.now() - timedelta(days=19 * 31),
+        )
 
     def test_owner_field(self):
         """
@@ -66,7 +67,7 @@ class LanguageSerializerTestCase(APITestCase):
         years_exp field shows correct years of experience
         """
         response = self.client.get(f'/languages/{self.language.id}/')
-        expected_years_exp = 8 
+        expected_years_exp = 8
         self.assertEqual(response.data["years_exp"], expected_years_exp)
 
     def test_less_than_one_years_exp_field(self):

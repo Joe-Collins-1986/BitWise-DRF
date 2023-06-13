@@ -6,7 +6,8 @@ from likes.models import Like
 
 class LikeModelTest(TestCase):
     def setUp(self):
-        user = User.objects.create_user(username='testuser', password='testpass')
+        user = User.objects.create_user(
+            username='testuser', password='testpass')
         article = Article.objects.create(
             owner=user,
             article_title='Test Article',
@@ -31,7 +32,8 @@ class LikeModelTest(TestCase):
         '''
         likes are ordered by created_at in descending order
         '''
-        user = User.objects.create_user(username='anotheruser', password='testpass')
+        user = User.objects.create_user(
+            username='anotheruser', password='testpass')
         article = Article.objects.create(
             owner=user,
             article_title='Article 2',

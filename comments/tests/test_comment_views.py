@@ -4,11 +4,15 @@ from rest_framework import status
 from comments.models import Comment
 from articles.models import Article
 
+
 class CommentListTestCase(APITestCase):
     def setUp(self):
-        self.user = User.objects.create_user(username='testuser', password='testpassword')
-        self.article = Article.objects.create(article_title='Test Article', owner=self.user)
-        self.comment = Comment.objects.create(article=self.article, owner=self.user, body='Test Comment')
+        self.user = User.objects.create_user(
+            username='testuser', password='testpassword')
+        self.article = Article.objects.create(
+            article_title='Test Article', owner=self.user)
+        self.comment = Comment.objects.create(
+            article=self.article, owner=self.user, body='Test Comment')
 
     def test_comment_list(self):
         '''
@@ -37,11 +41,15 @@ class CommentListTestCase(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
         self.assertEqual(Comment.objects.count(), 1)
 
+
 class CommentDetailTestCase(APITestCase):
     def setUp(self):
-        self.user = User.objects.create_user(username='testuser', password='testpassword')
-        self.article = Article.objects.create(article_title='Test Article', owner=self.user)
-        self.comment = Comment.objects.create(article=self.article, owner=self.user, body='Test Comment')
+        self.user = User.objects.create_user(
+            username='testuser', password='testpassword')
+        self.article = Article.objects.create(
+            article_title='Test Article', owner=self.user)
+        self.comment = Comment.objects.create(
+            article=self.article, owner=self.user, body='Test Comment')
 
     def test_comment_detail(self):
         '''

@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # REST SCHEMA CLASS FOR API DOCUMENTATION
 # PAGINATION
 # DATE TIME FORMATING
-REST_FRAMEWORK = { 
+REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [(
         'rest_framework.authentication.SessionAuthentication'
         if 'DEV' in os.environ
@@ -34,7 +34,7 @@ REST_FRAMEWORK = {
         'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 20,
     'DATETIME_FORMAT': "%d %b %Y",
-    }
+}
 
 REST_USE_JWT = True
 JWT_AUTH_SECURE = True
@@ -48,7 +48,7 @@ REST_AUTH_SERIALIZERS = {
     'USER_DETAILS_SERIALIZER': 'bitwise.serializers.CurrentUserSerializer'
 }
 
-#DEV REST ENVIRONMENT
+# DEV REST ENVIRONMENT
 if 'DEV' not in os.environ:
     REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] = [
         'rest_framework.renderers.JSONRenderer',
@@ -142,16 +142,16 @@ WSGI_APPLICATION = 'bitwise.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 if 'DEV' in os.environ:
-     DATABASES = {
-         'default': {
-             'ENGINE': 'django.db.backends.sqlite3',
-             'NAME': BASE_DIR / 'db.sqlite3',
-         }
-     }
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 else:
-     DATABASES = {
-         'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
-     }
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+    }
 
 
 # Password validation

@@ -2,12 +2,13 @@ from django.db import IntegrityError
 from rest_framework import serializers
 from .models import Follower
 
+
 class FollowerSerializer(serializers.ModelSerializer):
     """
     - Serializer for the Follwer model
     - Owner shows object owner's username in readonly format
     - Followed name shows followed user's username in readonly format
-    - Validate if follower object already exists between user and 
+    - Validate if follower object already exists between user and
     followed user and present tailored error message if duplication
     """
     owner = serializers.ReadOnlyField(source='owner.username')
@@ -19,7 +20,7 @@ class FollowerSerializer(serializers.ModelSerializer):
             'id', 'owner', 'followed_name', 'followed',
             'created_at',
         ]
-    
+
     def create(self, validated_data):
         try:
             return super().create(validated_data)

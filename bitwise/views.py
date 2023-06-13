@@ -5,6 +5,7 @@ from .settings import (
     JWT_AUTH_SECURE,
 )
 
+
 @api_view(['POST'])
 def logout_route(request):
     response = Response()

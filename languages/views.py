@@ -4,6 +4,7 @@ from .models import Language
 from .serializers import LanguageDetailSerializer, LanguageSerializer
 from django_filters.rest_framework import DjangoFilterBackend
 
+
 class LanguageList(generics.ListCreateAPIView):
     """
     - List out all the languages
@@ -24,6 +25,7 @@ class LanguageList(generics.ListCreateAPIView):
     filterset_fields = [
         'owner__profile',
     ]
+
 
 class LanguageDetail(generics.RetrieveUpdateDestroyAPIView):
     """

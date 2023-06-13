@@ -3,6 +3,7 @@ from bitwise.permissions import IsOwnerOrReadOnly
 from .models import Like
 from .serializers import LikeSerializer
 
+
 class LikeList(generics.ListCreateAPIView):
     """
     - List out all the likes
@@ -23,7 +24,7 @@ class LikeDetail(generics.RetrieveDestroyAPIView):
     - Uses same Like serializer
     - Uses IsOwnerOrReadOnly tailored permission class
     to ensure only owner can delete article info
-    - No need for update, likes works of deleting and 
+    - No need for update, likes works of deleting and
     creating a new like if required
     """
     serializer_class = LikeSerializer

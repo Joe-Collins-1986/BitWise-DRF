@@ -4,12 +4,17 @@ from rest_framework import status
 from articles.models import Article
 from likes.models import Like
 
+
 class LikeListTestCase(APITestCase):
     def setUp(self):
-        self.user = User.objects.create_user(username='testuser', password='testpassword')
-        self.user2 = User.objects.create_user(username='testuser2', password='testpassword')
-        self.article = Article.objects.create(article_title='Test Article', owner=self.user)
-        self.article2 = Article.objects.create(article_title='Test Article 2', owner=self.user)
+        self.user = User.objects.create_user(
+            username='testuser', password='testpassword')
+        self.user2 = User.objects.create_user(
+            username='testuser2', password='testpassword')
+        self.article = Article.objects.create(
+            article_title='Test Article', owner=self.user)
+        self.article2 = Article.objects.create(
+            article_title='Test Article 2', owner=self.user)
         self.like = Like.objects.create(article=self.article, owner=self.user)
 
     def test_like_list(self):
@@ -39,10 +44,13 @@ class LikeListTestCase(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
         self.assertEqual(Like.objects.count(), 1)
 
+
 class LikeDetailTestCase(APITestCase):
     def setUp(self):
-        self.user = User.objects.create_user(username='testuser', password='testpassword')
-        self.article = Article.objects.create(article_title='Test Article', owner=self.user)
+        self.user = User.objects.create_user(
+            username='testuser', password='testpassword')
+        self.article = Article.objects.create(
+            article_title='Test Article', owner=self.user)
         self.like = Like.objects.create(article=self.article, owner=self.user)
 
     def test_like_detail(self):

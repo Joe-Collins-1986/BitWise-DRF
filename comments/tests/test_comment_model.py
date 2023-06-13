@@ -6,7 +6,8 @@ from articles.models import Article
 
 class CommentModelTest(TestCase):
     def setUp(self):
-        user = User.objects.create_user(username='testuser', password='testpass')
+        user = User.objects.create_user(
+            username='testuser', password='testpass')
         article = Article.objects.create(
             owner=user,
             article_title='Test Article',
@@ -32,7 +33,8 @@ class CommentModelTest(TestCase):
         '''
         comments are ordered by created_at in descending order
         '''
-        user = User.objects.create_user(username='anotheruser', password='testpass')
+        user = User.objects.create_user(
+            username='anotheruser', password='testpass')
         article = Article.objects.create(
             owner=user,
             article_title='Another Article',

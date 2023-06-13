@@ -3,11 +3,15 @@ from rest_framework.test import APITestCase
 from rest_framework import status
 from followers.models import Follower
 
+
 class FollowerListTestCase(APITestCase):
     def setUp(self):
-        self.user1 = User.objects.create_user(username='user1', password='testpassword')
-        self.user2 = User.objects.create_user(username='user2', password='testpassword')
-        self.user3 = User.objects.create_user(username='user3', password='testpassword')
+        self.user1 = User.objects.create_user(
+            username='user1', password='testpassword')
+        self.user2 = User.objects.create_user(
+            username='user2', password='testpassword')
+        self.user3 = User.objects.create_user(
+            username='user3', password='testpassword')
 
     def test_follower_list(self):
         '''
@@ -42,10 +46,14 @@ class FollowerListTestCase(APITestCase):
 
 class FollowerDetailTestCase(APITestCase):
     def setUp(self):
-        self.user1 = User.objects.create_user(username='user1', password='testpassword')
-        self.user2 = User.objects.create_user(username='user2', password='testpassword')
-        self.user3 = User.objects.create_user(username='user3', password='testpassword')
-        self.follower = Follower.objects.create(owner=self.user1, followed=self.user2)
+        self.user1 = User.objects.create_user(
+            username='user1', password='testpassword')
+        self.user2 = User.objects.create_user(
+            username='user2', password='testpassword')
+        self.user3 = User.objects.create_user(
+            username='user3', password='testpassword')
+        self.follower = Follower.objects.create(
+            owner=self.user1, followed=self.user2)
 
     def test_follower_detail(self):
         '''
