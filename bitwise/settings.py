@@ -124,11 +124,6 @@ else:
         'localhost',
     ]
 
-CORS_ALLOWED_ORIGINS = [
-
-    "https://bit-wise-front-end.vercel.app",
-]
-
 ROOT_URLCONF = 'bitwise.urls'
 
 TEMPLATES = [
