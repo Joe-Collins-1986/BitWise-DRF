@@ -555,3 +555,94 @@ Serializers:
 | invalid page returns "detail": "Invalid page." | ✅ [link](https://bitwise-code-blog.herokuapp.com/comments/?page=9999) |
 | returns comment linked to specific article     | ✅ [link](https://bitwise-code-blog.herokuapp.com/comments/?article=2) |
 | specific comment                               | ✅ [link](https://bitwise-code-blog.herokuapp.com/comments/11/)        |
+
+### Followers:
+
+#### CRUD TESTING IN DEV ENV
+
+| CRUD Follower Testing                | ✅  |
+| ------------------------------------ | --- |
+| Create                               | ✅  |
+| Read                                 | ✅  |
+| Delete                               | ✅  |
+| Create restricted to authorised user | ✅  |
+| Delete restricted to owner           | ✅  |
+
+#### GET FOLLOWERS
+
+| Followers                                      | Result                                                                  |
+| ---------------------------------------------- | ----------------------------------------------------------------------- |
+| results returned                               | ✅ [link](https://bitwise-code-blog.herokuapp.com/followers/)           |
+| page filter returns page                       | ✅ [link](https://bitwise-code-blog.herokuapp.com/followers/?page=1)    |
+| invalid page returns "detail": "Invalid page." | ✅ [link](https://bitwise-code-blog.herokuapp.com/followers/?page=9999) |
+| specific follower                              | ✅ [link](https://bitwise-code-blog.herokuapp.com/followers/100/)       |
+
+### Languages:
+
+#### CRUD TESTING IN DEV ENV
+
+| CRUD Languages Testing               | ✅  |
+| ------------------------------------ | --- |
+| Create                               | ✅  |
+| Read                                 | ✅  |
+| Update                               | ✅  |
+| Delete                               | ✅  |
+| Create restricted to authorised user | ✅  |
+| Update & Delete restricted to owner  | ✅  |
+
+#### GET LANGUAGES
+
+| Languages                                      | Result                                                                         |
+| ---------------------------------------------- | ------------------------------------------------------------------------------ |
+| results returned                               | ✅ [link](https://bitwise-code-blog.herokuapp.com/languages/)                  |
+| page filter returns page                       | ✅ [link](https://bitwise-code-blog.herokuapp.com/languages/?page=1)           |
+| invalid page returns "detail": "Invalid page." | ✅ [link](https://bitwise-code-blog.herokuapp.com/languages/?page=9999)        |
+| returns language linked to specific profile    | ✅ [link](https://bitwise-code-blog.herokuapp.com/languages/?owner__profile=1) |
+| specific language                              | ✅ [link](https://bitwise-code-blog.herokuapp.com/languages/63/)               |
+
+### Likes:
+
+#### CRUD TESTING IN DEV ENV
+
+| CRUD Likes Testing                   | ✅  |
+| ------------------------------------ | --- |
+| Create                               | ✅  |
+| Read                                 | ✅  |
+| Delete                               | ✅  |
+| Create restricted to authorised user | ✅  |
+| Delete restricted to owner           | ✅  |
+
+#### GET LIKES
+
+| Likes                                          | Result                                                              |
+| ---------------------------------------------- | ------------------------------------------------------------------- |
+| results returned                               | ✅ [link](https://bitwise-code-blog.herokuapp.com/likes/)           |
+| page filter returns page                       | ✅ [link](https://bitwise-code-blog.herokuapp.com/likes/?page=1)    |
+| invalid page returns "detail": "Invalid page." | ✅ [link](https://bitwise-code-blog.herokuapp.com/likes/?page=9999) |
+| specific like                                  | ✅ [link](https://bitwise-code-blog.herokuapp.com/likes/20/)        |
+
+### Profiles:
+
+#### CRUD TESTING IN DEV ENV
+
+| CRUD Profiles Testing      | ✅  |
+| -------------------------- | --- |
+| Read                       | ✅  |
+| Update restricted to owner | ✅  |
+
+#### GET PROFILES
+
+| profiles                                       | Result                                                                                             |
+| ---------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| results returned                               | ✅ [link](https://bitwise-code-blog.herokuapp.com/profiles/)                                       |
+| page filter returns page                       | ✅ [link](https://bitwise-code-blog.herokuapp.com/profiles/?page=1)                                |
+| invalid page returns "detail": "Invalid page." | ✅ [link](https://bitwise-code-blog.herokuapp.com/profiles/?page=9999)                             |
+| search filter works for profile name           | ✅ [link](https://bitwise-code-blog.herokuapp.com/profiles/?search=joe)                            |
+| order by article count                         | ✅ [link](https://bitwise-code-blog.herokuapp.com/profiles/?ordering=-article_count)               |
+| order by followed count                        | ✅ [link](https://bitwise-code-blog.herokuapp.com/profiles/?ordering=-followed_count)              |
+| order by following count                       | ✅ [link](https://bitwise-code-blog.herokuapp.com/profiles/?ordering=-following_count)             |
+| order by language count                        | ✅ [link](https://bitwise-code-blog.herokuapp.com/profiles/?ordering=-languages_count)             |
+| all profiles following profile 1               | ✅ [link](https://bitwise-code-blog.herokuapp.com/profiles/?owner__following__followed__profile=1) |
+| all profiles followed by profile 1             | ✅ [link](https://bitwise-code-blog.herokuapp.com/profiles/?owner__followed__owner__profile=1)     |
+| All profiles that have knowledge of HTML       | ✅ [link](https://bitwise-code-blog.herokuapp.com/profiles/?owner__languages__language=HTML)       |
+| specific profile                               | ✅ [link](https://bitwise-code-blog.herokuapp.com/profiles/1/)                                     |
