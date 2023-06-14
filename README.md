@@ -179,17 +179,17 @@ If you have a LucidChart account, you can also view this ERD [here](https://luci
 
 An Agile methodology was applied to the development and implementation of this project.
 
-The project development as a whole was run in multiple iterations/sprints each targeting a number of User Stories. However, due to the relience of the frontend development on the API the first iteration/sprint was assigned to the Backend in it's entirety.
+The project development was run in multiple iterations/sprints each targeting several User Stories. However, due to the reliance of the frontend development on the API the first iteration/sprint was assigned to the Backend in its entirety.
 
 Each User Story was moved out of a backlog and assigned to the iteration with a priority label (Must Have, Should Have, Could Have).
 
-**Note:** Due the completion of all userstories within the iteration assigned deadline there was no reason to move any of the user stories back to Backlog and generate a following backend iteration with revised priority labels.
+**Note:** Due the completion of all user stories within the iteration assigned deadline there was no reason to move any of the user stories back to Backlog and generate a following backend iteration with revised priority labels.
 
-To manage the Agile backend iteration I used the projects function within my GitHub account, pulling User Stories into a KanBan Board.
+To manage the Agile backend iteration, I used the projects function within my GitHub account, pulling User Stories into a KanBan Board.
 
 For site of the project in GitHub detailing the completed User Stories for the backend iteration please click [here](https://github.com/users/Joe-Collins-1986/projects/9).
 
-**Note:** It should be noted that the priority label was in relation to it's prioriry within the iteration, not the project as a whole.
+**Note:** It should be noted that the priority label was in relation to its priority within the iteration, not the project as a whole.
 
 ## Models
 
@@ -340,7 +340,7 @@ The CommentList view is a view that provides the necessary functionality to list
 
 - The permission classes used for this view allow authenticated users to perform read (list) operations but require authentication for write (create) operations. This is specified by permissions.IsAuthenticatedOrReadOnly.
 
-- The CommentPagination class is used for pagination, limiting the number of comments displayed per page. This differes from the pagination set in the settings as the default for other views.
+- The CommentPagination class is used for pagination, limiting the number of comments displayed per page. This differs from the pagination set in the settings as the default for other views.
 
 - Filtering based on the article field is enabled using the DjangoFilterBackend. The comments can be filtered based on the article they belong to. This allows them to be assigned to a specific article page.
 
@@ -548,11 +548,11 @@ This view can be used to retrieve detailed information about a specific like and
 <details>
     <summary style="font-weight:bold">Logout View</summary>
 
-The Logout view was added under the Code Institute instructions to resolve a known issue with the dj-rest-auth for loggin users out.
+The Logout view was added under the Code Institute instructions to resolve a known issue with the dj-rest-auth for logged in users out.
 
 Features:
 
-- Sets both cookies to an empty string and pass additional attributes like secure, httponly and samesite. (excerpt from CI Django REST Framework tutorial)
+- Sets both cookies to an empty string and pass additional attributes like secure, httponly and samesite. (Excerpt from CI Django REST Framework tutorial)
 
 </details>
 
@@ -722,7 +722,7 @@ The LanguageDetailSerializer provides a detailed view of the Language model data
 
 - language: The language field is a read-only field.
 
-This serializer can be used to retrieve detailed information about a Language object, including the owner's username, years of experience in using the language, and the language itself, which is set to read-only.
+This serializer can be used to retrieve detailed information about a language object, including the owner's username, years of experience in using the language, and the language itself, which is set to read-only.
 
 </details>
 
@@ -812,7 +812,7 @@ For further insight into endpoinds see API ducmentation [link](https://bitwise-c
 - Add a recommended section to the Profile. Users to be able to recommend articles to other users which would appear in their profile next to languages. This would be achieved by creating a model linking articles to profiles.
 - Add restriction option to the articles which the author could apply. This would restrict users who are not following the author from reading the articles.
 - Add video uploads as well as articles - storing to AWS.
-- Potenetial for live streaming - would required third party integration with a service such as Wowza, Vimeo, YouTube Live, etc.
+- Potential for live streaming - would require third party integration with a service such as Wowza, Vimeo, YouTube Live, etc.
 - Add a payment method so authors can make restricted content for purchase only.
 
 # Technologies Used
@@ -872,9 +872,9 @@ Testing documentation found [here](TESTING.md).
 
 ### Define what the endpoints being developed are aiming to achieve up front.
 
-The development of this backend taught me the importance of haveing a very clear understanding of the entity relationship between models and how the required data should be presented in the appropriate endpoints via serializers prior to the build.
+The development of this backend taught me the importance of having a very clear understanding of the entity relationship between models and how the required data should be presented in the appropriate endpoints via serializers prior to the build.
 
-This is essential for reducing duplication of effort and having a more effiecient model structure.
+This is essential for reducing duplication of effort and having a more efficient model structure.
 
 # Deployment
 
@@ -882,7 +882,7 @@ This is essential for reducing duplication of effort and having a more effiecien
 
 Deployment doumentation found [here](DEPLOYMENT.md).
 
-   <br>
+<br>
 
 # Credits
 
@@ -892,7 +892,7 @@ Deployment doumentation found [here](DEPLOYMENT.md).
 
 In addition to the basic training the use of the logout_route to resolve the bug with dj-rest-auth not allowing users to log out was used.
 
-- [Very Academy](https://www.youtube.com/watch?v=-nuobfiU49Q) – Youtube Instructor – Helped develop develop my undertanding of API documentation and how to deploy it.
+- [Very Academy](https://www.youtube.com/watch?v=-nuobfiU49Q) – Youtube Instructor – Helped develop my understanding of API documentation and how to deploy it.
 - Stack Overflow used for generalised queries during development.
 
 ## Acknowledgements
