@@ -56,16 +56,16 @@
 
 **Note:** For the purpose of this project a fictitious client has been generated to provide scope for:
 
-- testing my API devlopment utilising Python through the use of a Django REST Framework (DRF).
+- testing my API development utilising Python through the use of a Django REST Framework (DRF).
 - testing my Frontend development utilising HTML, CSS and JavaScript through the use of React (for more information on the frontend development visit my [BitWise Frontend Repo](https://github.com/Joe-Collins-1986/BitWise-Front-End))
 
 The backend for this BitWise project has been developed with Django Rest Framework (DRF) for generation of an API. It provides various endpoints for user authentication, profile management, article handling, comments, likes, and more.
 
-These endpoints will by utilised by the frontend application for development of a site where users post coding articles to the programming community.
+These endpoints will be utilised by the frontend application for development of a site where users post coding articles to the programming community.
 
-Following discussions with the client this site will initially be tailored to written articles with the potential to expand to video uploads, live streaming and purchasable tutorials.
+Following discussions with the client this site will initially be tailored to written articles with the potential to expand to video uploads, live streaming, and purchasable tutorials.
 
-   <br>
+<br>
 
 # Project Planning
 
