@@ -22,17 +22,16 @@
   - [Serializers](#serializers)
   - [Permissons](#permissons)
   - [CRUD - Endpoint Map](#crud---endpoint-map)
-- [Further Development]
+- [Further Development](#further-development)
 - [Technologies Used]
   - [Languages Used]
   - [Frameworks Used]
   - [Libraries Used]
   - [Developer Tools]
-- [Testing]
-  - [Testing Document]
-  - [Further Testing]
-  - [Development Bugs]
-  - [Key Learns]
+- [Testing](#Testing)
+  - [Testing Document](#testing-document)
+  - [Further Testing](#further-testing)
+  - [Key Learns](#key-learns)
 - [Deployment](#deployment)
   - [Deployment Document](#deployment-document)
 - [Credits]
@@ -809,6 +808,14 @@ For further insight into endpoinds see API ducmentation [link](https://bitwise-c
 
 </details>
 
+# Further Development
+
+- Add a recommended section to the Profile. Users to be able to recommend articles to other users which would appear in their profile next to languages. This would be achieved by creating a model linking articles to profiles.
+- Add restriction option to the articles which the author could apply. This would restrict users who are not following the author from reading the articles.
+- Add video uploads as well as articles - storing to AWS.
+- Potenetial for live streaming - would required third party integration with a service such as Wowza, Vimeo, YouTube Live, etc.
+- Add a payment method so authors can make restricted content for purchase only.
+
 # Testing
 
 ## Testing Document
@@ -817,8 +824,15 @@ Testing documentation found [here](TESTING.md).
 
 ## Further Testing
 
-- Each enpoint tested by developer to ensure functionality worked as expected.
 - Issued to Slack community to review and provide feedback on.
+
+## Key Learns
+
+### Define what the endpoints being developed are aiming to achieve up front.
+
+The development of this backend taught me the importance of haveing a very clear understanding of the entity relationship between models and how the required data should be presented in the appropriate endpoints via serializers prior to the build.
+
+This is essential for reducing duplication of effort and having a more effiecient model structure.
 
 # Deployment
 
