@@ -6,7 +6,8 @@ Back to Readme [here](README.md)
 
 - [Python Unit Testing](#python-unit-testing)
 - [Python Validation Testing](#python-validation-testing)
-- [User Testing](#user-testing)
+- [User Story Testing](#user-story-testing)
+- [Manual Testing](#user-testing)
 
 <br>
 
@@ -502,7 +503,21 @@ Serializers:
 
 </details>
 
-## User Testing
+## User Story Testing
+
+### User Stories Acceptance Criteria
+
+Each User Story documented (as an issue) in the Backend Project Iteration [here](https://github.com/Joe-Collins-1986/BitWise-DRF/projects?query=is%3Aclosed) has Acceptance Criteria documented on GitHub which needed to be achieved before marking the User Sory to complete.
+
+To view these access the User Story Issues.
+
+Example Screenshot of Iteration On GitHub:
+
+Example Screenshot of User Story in Iteration:
+
+![Example Screenshot Of a User Story](readme-assets/planning/example-user-story.png)
+
+## Manual Testing
 
 ### Articles:
 
