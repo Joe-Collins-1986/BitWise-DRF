@@ -126,6 +126,7 @@ Following instructions are for Visual Studio Code:
    <br>
 
    - ALLOWED_HOST = "HEROKU API HOST URL"
+   - CLIENT_ORIGIN' = "SET THE FRONT END URL YOU WILL BE HOSTING"
    - SECRET_KEY = "GENERATE AND ADD A SECTRET KEY"
 
    <br>
