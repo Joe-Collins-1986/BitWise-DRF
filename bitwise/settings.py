@@ -115,6 +115,15 @@ MIDDLEWARE = [
 
 CORS_ALLOW_CREDENTIALS = True
 
+if 'CLIENT_ORIGIN' in os.environ:
+    CORS_ALLOWED_ORIGINS = [
+        os.environ.get('CLIENT_ORIGIN')
+    ]
+else:
+    CORS_ALLOWED_ORIGINS = [
+        'localhost',
+    ]
+
 CORS_ALLOWED_ORIGINS = [
 
     "https://bit-wise-front-end.vercel.app",
