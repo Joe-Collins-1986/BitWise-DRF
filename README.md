@@ -23,11 +23,11 @@
   - [Permissons](#permissons)
   - [CRUD - Endpoint Map](#crud---endpoint-map)
 - [Further Development](#further-development)
-- [Technologies Used]
-  - [Languages Used]
-  - [Frameworks Used]
-  - [Libraries Used]
-  - [Developer Tools]
+- [Technologies Used](#technologies-used)
+  - [Languages Used](#languages-used)
+  - [Frameworks Used](#frameworks-used)
+  - [Libraries Used](#libraries-used)
+  - [Developer Tools](#developer-tools)
 - [Testing](#Testing)
   - [Testing Document](#testing-document)
   - [Further Testing](#further-testing)
@@ -815,6 +815,49 @@ For further insight into endpoinds see API ducmentation [link](https://bitwise-c
 - Add video uploads as well as articles - storing to AWS.
 - Potenetial for live streaming - would required third party integration with a service such as Wowza, Vimeo, YouTube Live, etc.
 - Add a payment method so authors can make restricted content for purchase only.
+
+# Technologies Used
+
+## Languages Used
+
+- Python
+
+## Frameworks Used
+
+| Framework             | Description                                     |
+| --------------------- | ----------------------------------------------- |
+| Django                | Python framework for building web applications. |
+| Django Rest Framework | Toolkit for building Web APIs in Django.        |
+
+## Libraries Used
+
+| Library                       | Description                                                                                     |
+| ----------------------------- | ----------------------------------------------------------------------------------------------- |
+| autopep8                      | Automatically formats Python code to conform to the PEP 8 style guide.                          |
+| boto3                         | Provides access to AWS services.                                                                |
+| coverage                      | Code coverage of unit tests.                                                                    |
+| dj-database-url               | Allows the use of database URLs in Django settings.                                             |
+| dj-rest-auth                  | Provides API endpoints for user registration and authentication in Django REST Framework.       |
+| django-allauth                | Django applications for authentication, registration, and account management.                   |
+| django-cors-headers           | Adds Cross-Origin Resource Sharing (CORS) headers to Django responses.                          |
+| django-filter                 | Enables filtering of Django querysets based on model fields.                                    |
+| django-resized                | Resizes images uploaded by users and crops avatars to a square shape for correct display.       |
+| django-storages               | Provides custom storage backends for Django, including integration with cloud storage services. |
+| djangorestframework-simplejwt | A JSON Web Token authentication plugin for Django REST Framework.                               |
+| psycopg2-binary               | PostgreSQL database adapter for Python for working with a PostgreSQL database.                  |
+
+## Developer Tools
+
+| Developer Tool      | Description                                                              |
+| ------------------- | ------------------------------------------------------------------------ |
+| Git                 | Used for version control and to Push to GitHub.                          |
+| GitHub              | Used to store and share code as well as publish to a live website.       |
+| Web Developer       | Used to analyze network responses.                                       |
+| tabletomarkdown.com | Used to quickly convert data to Markdown tables for TESTING.md document. |
+| Heroku              | Hosting deployed site.                                                   |
+| SQLite3             | Hosting development and testing databases.                               |
+| ElephantSQL         | Hosting PostgreSQL database for the live site.                           |
+| AWS                 | Hosting images and static files.                                         |
 
 # Testing
 
