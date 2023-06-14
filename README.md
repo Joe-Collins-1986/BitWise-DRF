@@ -96,10 +96,10 @@ If you have a LucidChart account, you can also view this Mind-Map [here](https:/
 <details>
     <summary style="font-weight:bold">Backend Requirements</summary>
 
-The client wants a well-structured backend with strong security and an administration panel allowing superusers CRUD functionality withing pre-built models to aide front end testing and API maintenance.
+The client wants a well-structured backend with strong security and an administration panel allowing superusers CRUD functionality within pre-built models to aide front end testing and API maintenance.
 
 - Django REST authorisation established.
-- Session Authentication for development and testing of DRF
+- Session Authentication for development and testing of DRF.
 - Permissions built for API CRUD.
 - Development and Live databases set up.
 - Static files and images housed on cloud server and linked to backend.
@@ -185,7 +185,7 @@ The project development was run in multiple iterations/sprints each targeting se
 
 Each User Story was moved out of a backlog and assigned to the iteration with a priority label (Must Have, Should Have, Could Have).
 
-**Note:** Due the completion of all user stories within the iteration assigned deadline there was no reason to move any of the user stories back to Backlog and generate a following backend iteration with revised priority labels.
+**Note:** Due to the completion of all user stories within the iteration assigned deadline there was no reason to move any of the user stories back to Backlog and generate a following backend iteration with revised priority labels.
 
 To manage the Agile backend iteration, I used the projects function within my GitHub account, pulling User Stories into a KanBan Board.
 
@@ -205,7 +205,7 @@ For site of the project in GitHub detailing the completed User Stories for the b
 | updated_at       | DateTimeField              | Date and time of last update            |
 | article_title    | CharField (max_length=255) | Title of the article                    |
 | article_content  | TextField                  | Content of the article                  |
-| primary_language | CharField (max_length=25)  | Primary language of the article         |
+| primary_language | CharField (max_length=25)  | Language article written about          |
 | github_link      | URLField                   | Link to the article's GitHub repository |
 
 </details>
@@ -550,7 +550,7 @@ This view can be used to retrieve detailed information about a specific like and
 <details>
     <summary style="font-weight:bold">Logout View</summary>
 
-The Logout view was added under the Code Institute instructions to resolve a known issue with the dj-rest-auth for logged in users out.
+The Logout view was added under the Code Institute instructions to resolve a known issue with the dj-rest-auth for logging users out.
 
 Features:
 
@@ -575,7 +575,7 @@ The CurrentUserSerializer extends the UserDetailsSerializer provided by the dj-r
 
 The CurrentUserSerializer inherits from UserDetailsSerializer and adds two extra fields to include profile-related information. It includes the fields defined in the parent class and appends the profile_id and profile_image fields to the serialized output.
 
-his serializer can be used to include the profile ID and profile image URL when serializing the details of the current user.
+This serializer can be used to include the profile ID and profile image URL when serializing the details of the current user.
 
 </details>
 
@@ -716,7 +716,7 @@ The LanguageSerializer handles the serialization and deserialization of Language
 
 This serializer can be used to serialize and deserialize Language model data, including the owner's username, the years of experience in using the language, and perform validation to prevent the creation of duplicate language entries for the same owner.
 
-### Language Serializer
+### Language Detail Serializer
 
 The LanguageDetailSerializer provides a detailed view of the Language model data. It inherits from the LanguageSerializer and sets the "language" field as read-only.
 
@@ -802,7 +802,7 @@ To detail the API CRUD functionality in full an API documentation page has been 
 | LIKES     | /likes/{id}/                   | ✅                   | ❌                                                                                       | ❌              | ❌                        | ✅                 | CRD      |
 
 **Note:** Additional endpoints exist for auth functionality. Only detailed ones used.<br>
-For further insight into endpoinds see API ducmentation [link](https://bitwise-code-blog.herokuapp.com/#)
+For further insight into endpoinds see API docmentation [link](https://bitwise-code-blog.herokuapp.com/#)
 
 - Website used to convert excel to markdown: [here](https://tabletomarkdown.com/convert-spreadsheet-to-markdown/)
 - Website used to convert back to excel incase updates required: [here](https://tableconvert.com/markdown-to-excel)
