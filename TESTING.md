@@ -511,8 +511,6 @@ Each User Story documented (as an issue) in the Backend Project Iteration [here]
 
 To view these access the User Story Issues.
 
-Example Screenshot of Iteration On GitHub:
-
 Example Screenshot of User Story in Iteration:
 
 ![Example Screenshot Of a User Story](readme-assets/planning/example-user-story.png)
