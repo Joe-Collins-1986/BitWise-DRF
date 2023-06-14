@@ -35,9 +35,8 @@
 - [Deployment](#deployment)
   - [Deployment Document](#deployment-document)
 - [Credits]
-  - [Development Resources]
-  - [Media and Content Resources]
-  - [Acknowledgements]
+  - [Development Resources](#development-resources)
+  - [Acknowledgements](#acknowledgements)
 
 <br>
 
@@ -884,3 +883,20 @@ This is essential for reducing duplication of effort and having a more effiecien
 Deployment doumentation found [here](DEPLOYMENT.md).
 
    <br>
+
+# Credits
+
+## Development Resources
+
+- Code Institute – The development of this project was based on the knowledge acquired through the Django REST Framework training module.
+
+In addition to the basic training the use of the logout_route to resolve the bug with dj-rest-auth not allowing users to log out was used.
+
+- [Very Academy](https://www.youtube.com/watch?v=-nuobfiU49Q) – Youtube Instructor – Helped develop develop my undertanding of API documentation and how to deploy it.
+- Stack Overflow used for generalised queries during development.
+
+## Acknowledgements
+
+- Thank to my Mentor (Spencer Barriball) for his feedback and guidance.
+- To all my friends and family that have supported me during this training period.
+- The Code Institute Slack community for helping with any and all queries.
