@@ -36,7 +36,7 @@
   - [Key Learns](#key-learns)
 - [Deployment](#deployment)
   - [Deployment Document](#deployment-document)
-- [Credits]
+- [Credits](#credits)
   - [Development Resources](#development-resources)
   - [Acknowledgements](#acknowledgements)
 
