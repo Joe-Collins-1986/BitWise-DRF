@@ -71,7 +71,7 @@ Following discussions with the client this site will initially be tailored to wr
 
 ## Problem Statement
 
-The client wishes to develop a social sharing platform targetted towards the programming community.
+The client wishes to develop a social sharing platform targeted towards the programming community.
 
 The developer worked with the client and focus groups consisting of programmers with varying levels of experience to establish the following problem statement. This was then used to establish some basic considerations which could be taken forward into a mind mapping session.
 
@@ -94,10 +94,10 @@ If you have a LucidChart account, you can also view this Mind-Map [here](https:/
 <details>
     <summary style="font-weight:bold">Backend Requirements</summary>
 
-The client wants a well structured backend with strong security and an administration panel allowing superusers CRUD functionality withing pre-built models to aide front end testing and API maintainance.
+The client wants a well-structured backend with strong security and an administration panel allowing superusers CRUD functionality withing pre-built models to aide front end testing and API maintenance.
 
 - Django REST authorisation established.
-- SessionAuthentication for development and testing of DRF
+- Session Authentication for development and testing of DRF
 - Permissions built for API CRUD.
 - Development and Live databases set up.
 - Static files and images housed on cloud server and linked to backend.
@@ -115,10 +115,10 @@ The client wants the frontend developer to have JWT authorisation, access to all
 - Frontend granted access to make axios requests to API.
 - JWTCookieAuthentication for external front end site.
 - Models meet front end requirements.
-- CRUD functionality meet front end requirements.
+- CRUD functionalities meet front end requirements.
 - Serializers built to pass appropriate data to endpoints used on interface.
 - Error messages presented back through API for duplication attempts.
-- Filters built to restrict quuery sets requested.
+- Filters built to restrict query sets requested.
 - Paginated API results to reduce payload requirements.
 
 ---
@@ -170,7 +170,7 @@ The below demonstrates the API models and their attributes as well as documentin
 
 ![DataBase ER Diagram](readme-assets/planning/entity-relationship-diagram.png)<br>
 
-If you have a LucidChart account, you can also view this functions flow [here](https://lucid.app/lucidchart/9582ec18-126e-4b88-b601-011cb64f6e74/edit?viewport_loc=121%2C-170%2C1656%2C1932%2C0_0&invitationId=inv_0eff3f1b-ba36-4160-a99a-1fa7881fa18a).
+If you have a LucidChart account, you can also view this ERD [here](https://lucid.app/lucidchart/9582ec18-126e-4b88-b601-011cb64f6e74/edit?viewport_loc=121%2C-170%2C1656%2C1932%2C0_0&invitationId=inv_0eff3f1b-ba36-4160-a99a-1fa7881fa18a).
 <br>
 
 # API Build
