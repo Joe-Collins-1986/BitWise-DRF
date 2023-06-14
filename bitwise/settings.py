@@ -116,7 +116,7 @@ MIDDLEWARE = [
 CORS_ALLOW_CREDENTIALS = True
 
 CORS_ALLOWED_ORIGINS = [
-    "localhost",
+    "https://localhost",
     "https://bit-wise-front-end.vercel.app",
 ]
 
