@@ -1,5 +1,7 @@
 # BitWise - API
 
+![API Home Page](readme-assets/build/api-doc.png)
+
 # Table Of Contents
 
 - [Bitwise Site Links](#bitwise-site-links)
