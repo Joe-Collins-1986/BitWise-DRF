@@ -28,11 +28,9 @@ class RecommendArticleSerializer(serializers.ModelSerializer):
         fields = ['article', 'recommended_to']
 
     def create(self, validated_data):
-        article = validated_data['article']
-        recommended_to = validated_data['recommended_to']
-
-        # Check if a RecommendedArticle with the same article and recommended_to already exists
-        if RecommendedArticle.objects.filter(article=article, recommended_to=recommended_to).exists():
-            raise serializers.ValidationError('Duplication')
-
-        return super().create(validated_data)
+        try:
+            return super().create(validated_data)
+        except IntegrityError:
+            raise serializers.ValidationError({
+                'detail': 'Duplication'
+            })
