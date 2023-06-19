@@ -99,6 +99,7 @@ INSTALLED_APPS = [
     'comments',
     'likes',
     'followers',
+    'recommended',
 ]
 SITE_ID = 1
 MIDDLEWARE = [
@@ -116,8 +117,10 @@ MIDDLEWARE = [
 CORS_ALLOW_CREDENTIALS = True
 
 CORS_ALLOWED_ORIGINS = [
-    os.environ.get('DEV_ORIGIN'),
-    os.environ.get('CLIENT_ORIGIN'),
+    'http://localhost:5173',
+
+    # os.environ.get('DEV_ORIGIN'),
+    # os.environ.get('CLIENT_ORIGIN'),
 ]
 
 ROOT_URLCONF = 'bitwise.urls'
