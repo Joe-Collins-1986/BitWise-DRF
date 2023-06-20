@@ -9,13 +9,14 @@ class ReceivedRecommendationSerializer(serializers.ModelSerializer):
     Includes the article title and the username of the recommending user
     """
 
+    article_id = serializers.ReadOnlyField(source='article.id')
     article_title = serializers.ReadOnlyField(source='article.article_title')
     recommending_username = serializers.ReadOnlyField(
         source='recommended_by.username')
 
     class Meta:
         model = RecommendedArticle
-        fields = ['id', 'article_title', 'recommending_username']
+        fields = ['id', 'article_id', 'article_title', 'recommending_username']
 
 
 class RecommendArticleSerializer(serializers.ModelSerializer):
