@@ -118,6 +118,7 @@ CORS_ALLOW_CREDENTIALS = True
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173',
+    'https://bit-wise-front-end.vercel.app',
 
     # os.environ.get('DEV_ORIGIN'),
     # os.environ.get('CLIENT_ORIGIN'),
