@@ -1,4 +1,4 @@
-from django.db import IntegrityError
+from django.contrib.humanize.templatetags.humanize import naturaltime
 from rest_framework import serializers
 from .models import RecommendedArticle
 
@@ -15,8 +15,10 @@ class ReceivedRecommendationSerializer(serializers.ModelSerializer):
         source='recommended_by.id')
     recommending_username = serializers.ReadOnlyField(
         source='recommended_by.username')
-    recommending_username = serializers.ReadOnlyField(
-        source='created_at')
+    created_at = serializers.SerializerMethodField()
+
+    def get_created_at(self, obj):
+        return naturaltime(obj.created_at)
 
     class Meta:
         model = RecommendedArticle
