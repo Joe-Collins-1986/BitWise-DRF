@@ -15,11 +15,14 @@ class ReceivedRecommendationSerializer(serializers.ModelSerializer):
         source='recommended_by.id')
     recommending_username = serializers.ReadOnlyField(
         source='recommended_by.username')
+    recommending_username = serializers.ReadOnlyField(
+        source='created_at')
 
     class Meta:
         model = RecommendedArticle
         fields = ['id', 'article_id', 'article_title',
-                  'recommending_id', 'recommending_username']
+                  'recommending_id', 'recommending_username',
+                  'created_at']
 
 
 class RecommendArticleSerializer(serializers.ModelSerializer):
