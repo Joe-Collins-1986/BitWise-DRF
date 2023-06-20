@@ -10,6 +10,7 @@ class RecommendedArticle(models.Model):
     Foreign Key - Article
     Foreign Key - User (recommended to)
     """
+    created_at = models.DateTimeField(auto_now_add=True)
     recommended_by = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='recommendations_given')
     article = models.ForeignKey(Article, on_delete=models.CASCADE)
@@ -17,7 +18,8 @@ class RecommendedArticle(models.Model):
         User, on_delete=models.CASCADE, related_name='received_recommendations')
 
     class Meta:
-        unique_together = ['article', 'recommended_to', 'recommended_by']
+        unique_together = ['article', 'recommended_to']
+        ordering = ['-created_at']
 
     def __str__(self):
         return f'Recommended Article: {self.article.article_title}'
