@@ -79,7 +79,7 @@ class ArticleSerializer(serializers.ModelSerializer):
         fields = [
             'id', 'owner', 'created_at',
             'updated_at', 'article_title', 'article_content',
-            'primary_language', 'github_link',
+            'primary_language',
             'is_owner', 'profile_id', 'profile_image',
             'like_id', 'comments_count', 'likes_count',
             'has_user_commented', 'current_user_comments_count',

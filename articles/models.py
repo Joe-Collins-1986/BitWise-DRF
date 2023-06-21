@@ -16,7 +16,7 @@ class Article(models.Model):
         max_length=25,
         blank=True,
     )
-    github_link = models.URLField(blank=True)
+    # github_link = models.URLField(blank=True)
 
     class Meta:
         ordering = ['-created_at']
