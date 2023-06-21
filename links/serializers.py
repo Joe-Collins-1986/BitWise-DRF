@@ -31,5 +31,5 @@ class LinkDetailSerializer(LinkSerializer):
     - Inherits from LinkSerializer
     - Sets link_title to readonly
     """
-    article = serializers.ReadOnlyField()
+    article = serializers.ReadOnlyField(source='article.article_title')
     link_title = serializers.ReadOnlyField()
