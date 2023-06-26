@@ -12,7 +12,6 @@ class ArticleModelTest(TestCase):
             article_title='Test Article',
             article_content='This is a test article.',
             primary_language='Python',
-            github_link='https://github.com/example'
         )
 
     def test_str_representation(self):
@@ -34,14 +33,12 @@ class ArticleModelTest(TestCase):
             article_title='Article 1',
             article_content='This is article 1.',
             primary_language='Python',
-            github_link='https://github.com/example'
         )
         article2 = Article.objects.create(
             owner=user,
             article_title='Article 2',
             article_content='This is article 2.',
             primary_language='Python',
-            github_link='https://github.com/example'
         )
 
         articles = Article.objects.all()

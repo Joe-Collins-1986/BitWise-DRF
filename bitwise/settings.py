@@ -118,8 +118,11 @@ MIDDLEWARE = [
 CORS_ALLOW_CREDENTIALS = True
 
 CORS_ALLOWED_ORIGINS = [
-    os.environ.get('DEV_ORIGIN'),
-    os.environ.get('CLIENT_ORIGIN'),
+    'http://localhost:5173',
+    'https://bit-wise-front-end.vercel.app',
+
+    # os.environ.get('DEV_ORIGIN'),
+    # os.environ.get('CLIENT_ORIGIN'),
 ]
 
 ROOT_URLCONF = 'bitwise.urls'

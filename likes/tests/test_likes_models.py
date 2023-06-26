@@ -13,7 +13,6 @@ class LikeModelTest(TestCase):
             article_title='Test Article',
             article_content='This is a test article.',
             primary_language='Python',
-            github_link='https://github.com/example'
         )
         Like.objects.create(
             owner=user,
@@ -39,7 +38,6 @@ class LikeModelTest(TestCase):
             article_title='Article 2',
             article_content='This is another article.',
             primary_language='JavaScript',
-            github_link='https://github.com/example'
         )
         Like.objects.create(
             owner=user,
