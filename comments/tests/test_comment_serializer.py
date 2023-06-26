@@ -15,7 +15,6 @@ class CommentSerializerTestCase(APITestCase):
             article_title='Test Article',
             article_content='',
             primary_language='',
-            github_link='',
         )
         self.comment = Comment.objects.create(
             owner=self.user, article=self.article, body='Test Comment')

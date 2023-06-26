@@ -17,7 +17,6 @@ class ArticleSerializerTestCase(APITestCase):
             article_title='Test Article',
             article_content='',
             primary_language='',
-            github_link='',
         )
         self.article.created_at = timezone.now() - timedelta(seconds=35)
         self.article.updated_at = timezone.now()

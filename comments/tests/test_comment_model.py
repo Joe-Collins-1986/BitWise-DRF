@@ -13,7 +13,6 @@ class CommentModelTest(TestCase):
             article_title='Test Article',
             article_content='This is a test article.',
             primary_language='Python',
-            github_link='https://github.com/example'
         )
         Comment.objects.create(
             owner=user,
@@ -40,7 +39,6 @@ class CommentModelTest(TestCase):
             article_title='Another Article',
             article_content='This is another article.',
             primary_language='JavaScript',
-            github_link='https://github.com/example'
         )
         Comment.objects.create(
             owner=user,
