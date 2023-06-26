@@ -59,9 +59,9 @@
 **Note:** For the purpose of this project a fictitious client has been generated to provide scope for:
 
 - testing my API development utilising Python through the use of a Django REST Framework (DRF).
-- testing my Frontend development utilising HTML, CSS and JavaScript through the use of React (for more information on the frontend development visit my [BitWise Frontend Repo](https://github.com/Joe-Collins-1986/BitWise-Front-End))
+- testing my Frontend development utilising HTML, CSS, JSX and JavaScript through the use of React (for more information on the frontend development visit my [BitWise Frontend Repo](https://github.com/Joe-Collins-1986/BitWise-Front-End))
 
-The backend for this BitWise project has been developed with Django Rest Framework (DRF) for generation of an API. It provides various endpoints for user authentication, profile management, article handling, comments, likes, and more.
+The backend for this BitWise project has been developed with Django Rest Framework (DRF) for generation of an API. It provides various endpoints for user authentication, profile management, article handling, comments, likes, languages, recomendations and more.
 
 These endpoints will be utilised by the frontend application for development of a site where users post coding articles to the programming community.
 
@@ -77,9 +77,9 @@ The client wishes to develop a social sharing platform targeted towards the prog
 
 The developer worked with the client and focus groups consisting of programmers with varying levels of experience to establish the following problem statement. This was then used to establish some basic considerations which could be taken forward into a mind mapping session.
 
-![Problem Statement](readme-assets/planning/brainstorming.png)
+![Problem Statement](readme-assets/planning/problem-statement.png)
 <br>
-If you have a LucidChart account, you can also view this Problem Statement [here](https://lucid.app/lucidspark/ddcc77ae-81e5-48bb-a143-1d8d08517e84/edit?page=0_0&invitationId=inv_33957d7f-3414-4f5b-afb7-62686062836a#).
+If you have a LucidChart account, you can also view this Problem Statement [here](https://lucid.app/lucidspark/ddcc77ae-81e5-48bb-a143-1d8d08517e84/edit?viewport_loc=107%2C-36%2C1957%2C1575%2C0_0&invitationId=inv_33957d7f-3414-4f5b-afb7-62686062836a).
 <br>
 
 ## Mind Map
@@ -90,6 +90,30 @@ The below image provides an initial mind-map into the features which might be ap
 <br>
 If you have a LucidChart account, you can also view this Mind-Map [here](https://lucid.app/lucidspark/92bb6c34-c508-4ed3-81f9-8e426a018834/edit?viewport_loc=-424%2C-51%2C1937%2C2060%2C0_0&invitationId=inv_e1afcf88-79d6-418d-b020-bca52437b6bf).
 <br>
+
+<details>
+    <summary style="font-weight:bold">Additional Feature Mindmap 1 (Recommended Articles)</summary>
+
+Following the successfull implementation of the key features detailed in the mind-map above additional features where looked at. The first of which was providing users with the ability to recomend articles to other users. It was also decided users should be able to recomend articles to themselves to track interesting articles in their profile.
+
+![Mind Map 2](readme-assets/planning/mind-map-recommend.png)
+<br>
+If you have a LucidChart account, you can also view this Mind-Map [here](https://lucid.app/lucidspark/34d434b2-010e-4246-ac39-269c2211bb0e/edit?viewport_loc=-722%2C-256%2C2558%2C2139%2C0_0&invitationId=inv_678e0c52-d0b2-432c-980d-6db61438c1e7).
+<br>
+
+</details>
+
+<details>
+    <summary style="font-weight:bold">Additional Feature Mindmap 2 (Article Links)</summary>
+
+Following the successfull implementation of the recomendation model an additonal feature was considered. This feature would allow users to add multiple links to their articles rather than just the single gitbhub link.
+
+![Mind Map 3](readme-assets/planning/mind-map-link.png)
+<br>
+If you have a LucidChart account, you can also view this Mind-Map [here](https://lucid.app/lucidspark/1137056a-e0e7-43be-9649-326ac726632b/edit?view_items=XcV-NTGVf5AH&invitationId=inv_65d9edd0-81f1-443d-845b-b797ab20628a).
+<br>
+
+</details>
 
 ## API Objectives
 
@@ -161,7 +185,7 @@ The below graphs map out the feasibility of the backend features considered agai
 ![Detailed Priority Matrix](readme-assets/planning/detailed-priority-matrix.png)
 <br>
 
-If you have a LucidChart account, you can also view this priority matrix [here](https://lucid.app/lucidspark/0daa104b-7056-4351-b4f9-e2e77701b480/edit?viewport_loc=769%2C650%2C6475%2C6256%2C0_0&invitationId=inv_e5bb265c-e341-41fd-9c04-266266ad9a61).
+If you have a LucidChart account, you can also view this priority matrix [here](https://lucid.app/lucidspark/0daa104b-7056-4351-b4f9-e2e77701b480/edit?viewport_loc=-1552%2C838%2C2720%2C2576%2C0_0&invitationId=inv_e5bb265c-e341-41fd-9c04-266266ad9a61).
 <br>
 
 </details>
@@ -172,7 +196,7 @@ The below demonstrates the API models and their attributes as well as documentin
 
 ![DataBase ER Diagram](readme-assets/planning/entity-relationship-diagram.png)<br>
 
-If you have a LucidChart account, you can also view this ERD [here](https://lucid.app/lucidchart/9582ec18-126e-4b88-b601-011cb64f6e74/edit?viewport_loc=121%2C-170%2C1656%2C1932%2C0_0&invitationId=inv_0eff3f1b-ba36-4160-a99a-1fa7881fa18a).
+If you have a LucidChart account, you can also view this ERD [here](https://lucid.app/lucidchart/9582ec18-126e-4b88-b601-011cb64f6e74/edit?viewport_loc=-45%2C-576%2C2364%2C2589%2C0_0&invitationId=inv_0eff3f1b-ba36-4160-a99a-1fa7881fa18a).
 <br>
 
 # API Build
