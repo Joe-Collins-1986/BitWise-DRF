@@ -7,8 +7,8 @@ from django_filters.rest_framework import DjangoFilterBackend
 
 class LinkList(generics.ListCreateAPIView):
     """
-    - List out all the languages
-    - Option to create new language if logged in
+    - List out all the links
+    - Option to create new link if logged in
     with owner = request.user
     """
     serializer_class = LinkSerializer

@@ -306,6 +306,20 @@ For site of the project in GitHub detailing the completed User Stories for the b
 
 </details>
 
+<details>
+    <summary style="font-weight:bold">Link Model</summary>
+
+| Field Name | Field Type                 | Description                              |
+| ---------- | -------------------------- | ---------------------------------------- |
+| created_at | DateTimeField              | Date and time of creation                |
+| owner      | ForeignKey (User)          | User who owns the link                   |
+| article    | ForeignKey (Article)       | Article related to the link              |
+| link_title | CharField (max_length=255) | Title of the link                        |
+| link_brief | TextField                  | Brief description or summary of the link |
+| link_url   | URLField                   | URL of the link                          |
+
+</details>
+
 ## Views
 
 <details>
@@ -594,6 +608,96 @@ Features:
 
 </details>
 
+<details>
+    <summary style="font-weight:bold">Recommended Article View</summary>
+
+### ReceivedRecommendationsList
+
+The ReceivedRecommendationsList view is a view that retrieves all received recommendations. It inherits from generics.ListAPIView, a generic view provided by the Django REST Framework.
+
+#### Features
+
+- Retrieve all received recommendations: The view's purpose is to fetch all recommendations that have been received by the profile owner. The queryset is defined to filter RecommendedArticle objects based on the recipient (recommended_to) being the current user.
+
+- The ReceivedRecommendationsList view uses the ReceivedRecommendationSerializer for serializing and deserializing article data.
+
+- The permission classes used for this view require authentication. Only authenticated users can access this view. This is specified by IsAuthenticated.
+
+This view allows the profile owner to view all their received recommendations.
+
+### RecommendArticle
+
+The RecommendArticle view is a view that allows authenticated users to recommend articles. It inherits from generics.CreateAPIView, a generic view provided by the Django REST Framework.
+
+#### Features
+
+- The view enables authenticated users to recommend articles. The serializer_class is set to RecommendArticleSerializer, which is responsible for serializing and deserializing the recommendation data.
+
+- The permission classes used for this view require authentication. Only authenticated users can access this view. This is specified by IsAuthenticated.
+
+- The perform_create method is overridden to automatically set the recommended_by field of the created recommendation to the authenticated user. This associates the recommendation with the user who made it.
+
+This view allows authenticated users to recommend articles.
+
+### DeleteRecommendation
+
+The DeleteRecommendation view is a view that allows the recipient to delete a recommendation. It inherits from generics.DestroyAPIView, a generic view provided by the Django REST Framework.
+
+#### Features
+
+- The purpose of this view is to allow the recipient to delete a recommendation. The queryset is set to RecommendedArticle.objects.all(), which fetches all RecommendedArticle objects from the database.
+
+- The serializer_class is set to ReceivedRecommendationSerializer, which is responsible for serializing and deserializing the recommendation data.
+
+- The permission_classes used for this view require the recipient to be authenticated and allow read-only access to anyone else. This is achieved through the IsRecipientOrReadOnly permission class.
+
+This view allows the recipient to delete a recommendation.
+
+</details>
+
+<details>
+    <summary style="font-weight:bold">Article Link View</summary>
+
+### LinkList
+
+The LinkList view is a view that lists all the languages and allows the creation of new languages. It inherits from generics.ListCreateAPIView, a generic view provided by the Django REST Framework.
+
+#### Features:
+
+- List all links:
+  The view's purpose is to list all links. The queryset is set to Link.objects.all(), which fetches all Link objects from the database.
+
+- Option to create new link: Authenticated users can create new links by making a POST request. The perform_create method is overridden to automatically set the owner field of the created link to the authenticated user (request.user).
+
+- The serializer_class is set to LinkSerializer, which is responsible for serializing and deserializing the link data.
+
+- The permission_classes used for this view allow authenticated users to perform read (list) operations but require authentication for write (create) operations. This is specified by permissions.IsAuthenticatedOrReadOnly.
+
+- Filtering by fields: The view uses DjangoFilterBackend as the filter backend and defines the filterset_fields to enable filtering based on the owner's profile and the associated article. This can be used to show links associated with a specific article.
+
+This view can be used to list all links, create new links (if authenticated), and filter links based on specific criteria (specifically the article they are linked to)
+
+### LinkDetail
+
+The LinkDetail view is a view that provides detailed information about a specific link and allows updating and deletion of the link. It inherits from generics.RetrieveUpdateDestroyAPIView, a generic view provided by the Django REST Framework.
+
+#### Features:
+
+- Detail a specific link:
+  The purpose of this view is to provide detailed information about a specific link. The queryset is set to Link.objects.all(), which fetches all Link objects from the database.
+
+- Use a specific serializer:
+  The serializer_class is set to LinkDetailSerializer, which is responsible for serializing and deserializing the link data. It converts the article and link_title fields to read-only.
+
+- Uses IsOwnerOrReadOnly tailored permission class:
+  The permission_classes attribute is set to IsOwnerOrReadOnly, which ensures that only the owner of the like object can delete it. This permission class allows read-only access to anyone but requires the owner's authentication for write (delete) operations.
+
+- Ensure owner-only permissions: The permission_classes used for this view ensure that only the owner of the link can update or delete its information. This is achieved through the IsOwnerOrReadOnly permission class.
+
+This view can be used to view detailed information about a specific link, update its data (if the authenticated user is the owner), and delete the link if necessary.
+
+</details>
+
 ## Serializers
 
 <details>
@@ -783,6 +887,72 @@ This serializer can be used to serialize and deserialize Like model data, includ
 
 </details>
 
+<details>
+    <summary>Recommended Article Serializers</summary>
+
+### ReceivedRecommendationSerializer
+
+The ReceivedRecommendationSerializer handles the serialization of the ReceivedRecommendedArticle model data. It includes the article title and the username of the recommending user.
+
+#### Features:
+
+- article_id: The article_id field is a read-only field that displays the ID of the recommended article.
+
+- article_title: The article_title field is a read-only field that displays the title of the recommended article.
+
+- recommending_id: The recommending_id field is a read-only field that displays the ID of the user who recommended the article.
+
+- recommending_username: The recommending_username field is a read-only field that displays the username of the user who recommended the article.
+
+- created_at: The created_at field is a SerializerMethodField that returns the naturaltime difference between the created_at field of the recommended article and the current time.
+
+This serializer provides information about the recommended article, including the article ID, title, recommending user ID, username, and the time when the recommendation was created.
+
+### RecommendArticleSerializer
+
+The RecommendArticleSerializer handles the serialization of articles being recommended.
+
+#### Features:
+
+- article: The article field is a reference to the recommended article.
+
+- recommended_to: The recommended_to field is a reference to the user to whom the article is being recommended.
+
+This serializer is used to serialize articles that are being recommended, including the references to the recommended article and the user to whom it is being recommended.
+
+</details>
+
+<details>
+    <summary>Link Serializers</summary>
+
+### LinkSerializer
+
+The LinkSerializer handles the serialization of the Link model data.
+
+#### Features:
+
+- owner: The owner field is a read-only field that displays the username of the object owner.
+
+- is_owner: The is_owner field is a SerializerMethodField that returns a boolean indicating whether the authenticated user is the owner of the object.
+
+- This serializer also includes a get_is_owner function that sets the is_owner field to true or false based on the comparison between the authenticated user and the object owner.
+
+The fields included in this serializer are: id, owner, is_owner, article, link_title, link_brief, and link_url.
+
+### LinkDetailSerializer
+
+The LinkDetailSerializer is a serializer for the Link model in the detailed view. It inherits from the LinkSerializer and adds additional functionality.
+
+#### Features:
+
+- article: The article field is a read-only field that displays the ID of the associated article.
+
+- link_title: The link_title field is a read-only field.
+
+This serializer is used for the detailed view of the Link model and provides additional fields such as the associated article ID and a read-only link_title field.
+
+</details>
+
 ## Permissons
 
 <details>
@@ -793,6 +963,17 @@ This serializer can be used to serialize and deserialize Like model data, includ
 The IsOwnerOrReadOnly class is a custom permission class that extends the BasePermission class from rest_framework.permissions.
 
 It allows read-only access to an object for any user, but only allows modification or deletion if the user requesting the action is the owner of the object.
+
+</details>
+
+<details>
+    <summary>IsRecipientOrReadOnly Permission</summary>
+    
+### IsRecipientOrReadOnly
+
+The IsRecipientOrReadOnly class is a custom permission class that extends the BasePermission class from rest_framework.permissions.
+
+It allows read-only access to an object for all users. However, it restricts the deletion action to only the recommendation recipient.
 
 </details>
 
