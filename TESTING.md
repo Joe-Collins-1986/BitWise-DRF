@@ -789,7 +789,7 @@ Example Screenshot of User Story in Iteration:
 
 #### GET PROFILES
 
-| profiles                                       | Result                                                                                             |
+| Profiles                                       | Result                                                                                             |
 | ---------------------------------------------- | -------------------------------------------------------------------------------------------------- |
 | results returned                               | ✅ [link](https://bitwise-code-blog.herokuapp.com/profiles/)                                       |
 | page filter returns page                       | ✅ [link](https://bitwise-code-blog.herokuapp.com/profiles/?page=1)                                |
@@ -808,7 +808,7 @@ Example Screenshot of User Story in Iteration:
 
 #### CRUD TESTING IN DEV ENV
 
-| CRUD recommendation Testing          | ✅  |
+| CRUD Recommendation Testing          | ✅  |
 | ------------------------------------ | --- |
 | Create                               | ✅  |
 | Read                                 | ✅  |
@@ -820,8 +820,32 @@ Example Screenshot of User Story in Iteration:
 
 To test the following links you must be logged in to an account with recommendations assigned to you or will recieve "Authentication credentials were not provided."
 
-| recommendations                                | Result                                                                       |
+| Recommendations                                | Result                                                                       |
 | ---------------------------------------------- | ---------------------------------------------------------------------------- |
 | results returned                               | ✅ [link](https://bitwise-code-blog.herokuapp.com/recomendations/)           |
 | page filter                                    | ✅ [link](https://bitwise-code-blog.herokuapp.com/recomendations/?page=1)    |
 | invalid page returns "detail": "Invalid page." | ✅ [link](https://bitwise-code-blog.herokuapp.com/recomendations/?page=9999) |
+
+### Links:
+
+#### CRUD TESTING IN DEV ENV
+
+| CRUD Link Testing                    | ✅  |
+| ------------------------------------ | --- |
+| Create                               | ✅  |
+| Read                                 | ✅  |
+| Update                               | ✅  |
+| Delete                               | ✅  |
+| Create restricted to authorised user | ✅  |
+| Update & Delete restricted to owner  | ✅  |
+
+#### GET LINKS
+
+| Links                                          | Result                                                                     |
+| ---------------------------------------------- | -------------------------------------------------------------------------- |
+| results returned                               | ✅ [link](https://bitwise-code-blog.herokuapp.com/links/)                  |
+| page filter                                    | ✅ [link](https://bitwise-code-blog.herokuapp.com/links/?page=1)           |
+| invalid page returns "detail": "Invalid page." | ✅ [link](https://bitwise-code-blog.herokuapp.com/links/?page=9999)        |
+| filter links by owner's profile                | ✅ [link](https://bitwise-code-blog.herokuapp.com/links/?owner__profile=1) |
+| filter links by owner's profile                | ✅ [link](https://bitwise-code-blog.herokuapp.com/links/?article=2)        |
+| specific link                                  | ✅ [link](https://bitwise-code-blog.herokuapp.com/links/16/)               |
