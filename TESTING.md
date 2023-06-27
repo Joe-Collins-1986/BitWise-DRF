@@ -15,7 +15,7 @@ Back to Readme [here](README.md)
 
 ## Python Unit Testing
 
-Unit Testing coverage
+Unit Testing coverage<br>
 ![Summary Unit Tests](readme-assets/unit_testing/summary-report.png)
 
 (excluding settings and manage.py files)
@@ -656,6 +656,7 @@ Each User Story documented (as an issue) in the Backend Project Iterations [here
 To view these access the User Story Issues.
 
 Example Screenshot of User Story in Iteration:
+<br>
 
 ![Example Screenshot Of a User Story](readme-assets/planning/example-user-story.png)
 
