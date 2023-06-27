@@ -12,7 +12,9 @@ class LinkListTestCase(APITestCase):
         self.article = Article.objects.create(
             article_title='Test Article', owner=self.user)
         self.link = Link.objects.create(
-            link_title='Test Link', link_url='https://example.com', article=self.article, owner=self.user)
+            link_title='Test Link',
+            link_url='https://example.com',
+            article=self.article, owner=self.user)
 
     def test_link_list(self):
         """
@@ -49,9 +51,12 @@ class LinkDetailTestCase(APITestCase):
         self.user = User.objects.create_user(
             username='testuser', password='testpassword')
         self.article = Article.objects.create(
-            article_title='Test Article', owner=self.user)
+            article_title='Test Article',
+            owner=self.user)
         self.link = Link.objects.create(
-            link_title='Test Link', link_url='https://example.com', article=self.article, owner=self.user)
+            link_title='Test Link',
+            link_url='https://example.com',
+            article=self.article, owner=self.user)
 
     def test_delete_link(self):
         """

@@ -27,7 +27,8 @@ class RecommendedArticleModelTest(TestCase):
         str provides expected info
         """
         recommendation = RecommendedArticle.objects.get(id=1)
-        expected_str = f'Recommended Article: {recommendation.article.article_title}'
+        expected_str = (
+            f'Recommended Article: {recommendation.article.article_title}')
         self.assertEqual(str(recommendation), expected_str)
 
     def test_recommendation_creation(self):

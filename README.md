@@ -501,7 +501,7 @@ The FollowerDetail is a view that handles the retrieval and deletion of a specif
   The FollowerDetail view uses the same FollowerSerializer for serializing and deserializing follower data, just like the FollowerList view.
 
 - Uses IsOwnerOrReadOnly tailored permission class:
-  The permission_classes attribute is set to [IsOwnerOrReadOnly], which ensures that only the owner of the follower object can delete it. This permission class allows read-only access to anyone but requires the owner's authentication for write (delete) operations.
+  The permission_classes attribute is set to IsOwnerOrReadOnly, which ensures that only the owner of the follower object can delete it. This permission class allows read-only access to anyone but requires the owner's authentication for write (delete) operations.
 
 - No need for update; followers work by deleting and creating a new follower if required:
   The FollowerDetail view does not support update operations. Instead, to update a follower, a new follower object needs to be created while deleting the existing one if necessary.
@@ -530,7 +530,7 @@ The LanguageList is a view that handles the listing and creation of languages. I
 - The permission classes used for this view allows unauthenticated users to perform read operations (IsAuthenticatedOrReadOnly).
 
 - Filter backend for owner\_\_profile:
-  The LanguageList view uses the DjangoFilterBackend for filtering languages based on the owner's profile. The filter_backends attribute is set to [DjangoFilterBackend], and the filterset_fields attribute is set to ['owner\_\_profile']. This allows languages to be assigned to the profile page of the language owner.
+  The LanguageList view uses the DjangoFilterBackend for filtering languages based on the owner's profile. The filter_backends attribute is set to DjangoFilterBackend, and the filterset_fields attribute is set to 'owner\_\_profile'. This allows languages to be assigned to the profile page of the language owner.
 
 This view can be used to list all the languages, create new language objects if they are authenticated.
 
@@ -547,7 +547,7 @@ The LanguageDetail is a view that handles the retrieval, update, and deletion of
   The LanguageDetail view uses the LanguageDetailSerializer for serializing and deserializing language data.
 
 - Uses IsOwnerOrReadOnly tailored permission class:
-  The permission_classes attribute is set to [IsOwnerOrReadOnly], which ensures that only the owner of the language object can update or delete its information. This permission class allows read-only access to anyone but requires the owner's authentication for write (update and delete) operations.
+  The permission_classes attribute is set to IsOwnerOrReadOnly, which ensures that only the owner of the language object can update or delete its information. This permission class allows read-only access to anyone but requires the owner's authentication for write (update and delete) operations.
 
 This view can be used to view detailed information about a specific language, update its data if they are the owner, and delete the language if necessary.
 
@@ -587,7 +587,7 @@ The LikeDetail view is a Django view that handles the retrieval and deletion of 
   The LikeDetail view uses the same LikeSerializer for serializing and deserializing like data, just like the LikeList view.
 
 - Uses IsOwnerOrReadOnly tailored permission class:
-  The permission_classes attribute is set to [IsOwnerOrReadOnly], which ensures that only the owner of the like object can delete it. This permission class allows read-only access to anyone but requires the owner's authentication for write (delete) operations.
+  The permission_classes attribute is set to IsOwnerOrReadOnly, which ensures that only the owner of the like object can delete it. This permission class allows read-only access to anyone but requires the owner's authentication for write (delete) operations.
 
 - No need for update; likes work by deleting and creating a new like if required:
 

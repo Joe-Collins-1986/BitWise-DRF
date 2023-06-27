@@ -1,7 +1,8 @@
 from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated
 from bitwise.permissions import IsRecipientOrReadOnly
-from recommended.serializers import RecommendArticleSerializer, ReceivedRecommendationSerializer
+from recommended.serializers import (
+    RecommendArticleSerializer, ReceivedRecommendationSerializer)
 from .models import RecommendedArticle
 
 

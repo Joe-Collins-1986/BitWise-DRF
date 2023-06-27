@@ -31,7 +31,8 @@ class LinkList(generics.ListCreateAPIView):
 class LinkDetail(generics.RetrieveUpdateDestroyAPIView):
     """
     - Detail the specificly requested link
-    - Uses the Detail Link serializer to convert article and link_title to readonly
+    - Uses the Detail Link serializer to convert article
+    and link_title to readonly
     - Uses IsOwnerOrReadOnly tailored permission class
     to ensure only owner can update or delete article info
     """

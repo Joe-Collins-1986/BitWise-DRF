@@ -15,10 +15,12 @@ Back to Readme [here](README.md)
 
 ## Python Unit Testing
 
-Unit Testing coverage to 100%.
+Unit Testing coverage
 ![Summary Unit Tests](readme-assets/unit_testing/summary-report.png)
 
 (excluding settings and manage.py files)
+
+**Note** See Bitwise App coverage below for detail on the one missing coverage element.
 
 See below for details on each app:
 
@@ -36,9 +38,13 @@ Article app covered to 100%:
 <details>
       <summary style="font-weight:bold">Bitwise App</summary>
    
-Bitwise app covered to 100%:
+Bitwise app - One missing element:
+
+The single missed coverage element is in relation to a missing test for the IsRecipientOrReadOnly permission where the individual has SAFE_METHOD permissions. This is because the build is set up so only show recommended articles to the recipient. However, I wished to keep this permision in place for potential future changes where I may make to allow the creator to view recomendations they have made but not ammend/delete them. As a result this was left as missing coverage.
 
 ![BitWise Unit Tests](readme-assets/unit_testing/bitwise.png)<br>
+
+![BitWise Unit Test Detail](readme-assets/unit_testing/bitwise-detail.png)<br>
 
 ---
 
@@ -99,6 +105,30 @@ Profile app covered to 100%:
 
 </details>
 
+<details>
+      <summary style="font-weight:bold">Recommended App</summary>
+   
+Recommended app covered to 100%:
+
+![Recommended Unit Tests](readme-assets/unit_testing/recommended.png)<br>
+
+---
+
+</details>
+
+<details>
+      <summary style="font-weight:bold">Link App</summary>
+   
+Link app covered to 100%:
+
+![Link Unit Tests](readme-assets/unit_testing/links.png)<br>
+
+---
+
+</details>
+
+</details>
+
 ## Python Validation Testing
 
 <details>
@@ -149,13 +179,13 @@ Models:
 
 Views:
 
-![Views](readme-assets/pep8/articles/views.png)
+![Views](readme-assets/pep8/articles-tests/test-views.png)
 
 ---
 
 Serializers:
 
-![Serializers](readme-assets/pep8/articles/serializers.png)
+![Serializers](readme-assets/pep8/articles-tests/test-serializers.png)
 
 ---
 
@@ -503,11 +533,125 @@ Serializers:
 
 </details>
 
+<details>
+      <summary style="font-weight:bold">Recommended</summary>
+<br>
+
+Admin:
+
+![Admin](readme-assets/pep8/recommended/admin.png)
+
+---
+
+Models:
+
+![Models](readme-assets/pep8/recommended/models.png)
+
+---
+
+Views:
+
+![Views](readme-assets/pep8/recommended/views.png)
+
+---
+
+Serializers:
+
+![Serializers](readme-assets/pep8/recommended/serializers.png)
+
+---
+
+URLs:
+
+![URLs](readme-assets/pep8/recommended/urls.png)
+
+---
+
+</details>
+
+<details>
+      <summary style="font-weight:bold">Recommended Tests</summary>
+<br>
+
+Models:
+
+![Models](readme-assets/pep8/recommended-tests/test-models.png)
+
+---
+
+Views:
+
+![Views](readme-assets/pep8/recommended-tests/test-views.png)
+
+---
+
+</details>
+
+<details>
+      <summary style="font-weight:bold">Links</summary>
+<br>
+
+Admin:
+
+![Admin](readme-assets/pep8/links/admin.png)
+
+---
+
+Models:
+
+![Models](readme-assets/pep8/links/models.png)
+
+---
+
+Views:
+
+![Views](readme-assets/pep8/links/views.png)
+
+---
+
+Serializers:
+
+![Serializers](readme-assets/pep8/links/serializers.png)
+
+---
+
+URLs:
+
+![URLs](readme-assets/pep8/links/urls.png)
+
+---
+
+</details>
+
+<details>
+      <summary style="font-weight:bold">Links Tests</summary>
+<br>
+
+Models:
+
+![Models](readme-assets/pep8/links-tests/test-model.png)
+
+---
+
+Views:
+
+![Views](readme-assets/pep8/links-tests/test-views.png)
+
+---
+
+Serializers:
+
+![Serializers](readme-assets/pep8/links-tests/test-serializers.png)
+
+---
+
+</details>
+
 ## User Story Testing
 
 ### User Stories Acceptance Criteria
 
-Each User Story documented (as an issue) in the Backend Project Iteration [here](https://github.com/Joe-Collins-1986/BitWise-DRF/projects?query=is%3Aclosed) has Acceptance Criteria documented on GitHub which needed to be achieved before marking the User Sory to complete.
+Each User Story documented (as an issue) in the Backend Project Iterations [here](https://github.com/Joe-Collins-1986/BitWise-DRF/projects?query=is%3Aclosed) has Acceptance Criteria documented on GitHub which needed to be achieved before marking the User Sory to complete.
 
 To view these access the User Story Issues.
 
@@ -659,3 +803,25 @@ Example Screenshot of User Story in Iteration:
 | all profiles followed by profile 1             | ✅ [link](https://bitwise-code-blog.herokuapp.com/profiles/?owner__followed__owner__profile=1)     |
 | All profiles that have knowledge of HTML       | ✅ [link](https://bitwise-code-blog.herokuapp.com/profiles/?owner__languages__language=HTML)       |
 | specific profile                               | ✅ [link](https://bitwise-code-blog.herokuapp.com/profiles/1/)                                     |
+
+### Recommendations:
+
+#### CRUD TESTING IN DEV ENV
+
+| CRUD recommendation Testing          | ✅  |
+| ------------------------------------ | --- |
+| Create                               | ✅  |
+| Read                                 | ✅  |
+| Delete                               | ✅  |
+| Create restricted to authorised user | ✅  |
+| Delete restricted to recipient       | ✅  |
+
+#### GET RECOMMENDATIONS
+
+To test the following links you must be logged in to an account with recommendations assigned to you or will recieve "Authentication credentials were not provided."
+
+| recommendations                                | Result                                                                       |
+| ---------------------------------------------- | ---------------------------------------------------------------------------- |
+| results returned                               | ✅ [link](https://bitwise-code-blog.herokuapp.com/recomendations/)           |
+| page filter                                    | ✅ [link](https://bitwise-code-blog.herokuapp.com/recomendations/?page=1)    |
+| invalid page returns "detail": "Invalid page." | ✅ [link](https://bitwise-code-blog.herokuapp.com/recomendations/?page=9999) |

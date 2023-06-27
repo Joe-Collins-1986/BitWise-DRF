@@ -12,10 +12,14 @@ class RecommendedArticle(models.Model):
     """
     created_at = models.DateTimeField(auto_now_add=True)
     recommended_by = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name='recommendations_given')
+        User,
+        on_delete=models.CASCADE,
+        related_name='recommendations_given')
     article = models.ForeignKey(Article, on_delete=models.CASCADE)
     recommended_to = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name='received_recommendations')
+        User,
+        on_delete=models.CASCADE,
+        related_name='received_recommendations')
 
     class Meta:
         unique_together = ['article', 'recommended_to']

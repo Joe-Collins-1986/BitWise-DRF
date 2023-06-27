@@ -19,20 +19,26 @@ class ReceivedRecommendationsListTestCase(APITestCase):
             article_title='Test Article 2', owner=self.user)
 
         self.recommendation = RecommendedArticle.objects.create(
-            recommended_by=self.user, article=self.article, recommended_to=self.user)
+            recommended_by=self.user,
+            article=self.article,
+            recommended_to=self.user)
         self.recommendation2 = RecommendedArticle.objects.create(
-            recommended_by=self.user, article=self.article2, recommended_to=self.user)
+            recommended_by=self.user,
+            article=self.article2,
+            recommended_to=self.user)
 
     def test_received_recommendations_list(self):
         """
-        endpoint returns a list of received recommendations for the authenticated user
+        endpoint returns a list of received recommendations for the
+        authenticated user
         """
         self.client.login(username="testuser", password="testpassword")
         response = self.client.get('/recomendations/')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(len(response.data['results']), 2)
         self.assertEqual(
-            response.data['results'][0]['recommending_username'], self.user.username)
+            response.data['results'][0]['recommending_username'],
+            self.user.username)
 
     def test_safe_recommendations_list(self):
         """
@@ -61,7 +67,9 @@ class RecommendArticleTestCase(APITestCase):
             article_title='Test Article', owner=self.user)
 
         self.recommendation = RecommendedArticle.objects.create(
-            recommended_by=self.user, article=self.article, recommended_to=self.user2)
+            recommended_by=self.user,
+            article=self.article,
+            recommended_to=self.user2)
 
     def test_recommend_article(self):
         """
