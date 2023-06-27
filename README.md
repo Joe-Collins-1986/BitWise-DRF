@@ -217,6 +217,16 @@ For site of the project in GitHub detailing the completed User Stories for the b
 
 **Note:** It should be noted that the priority label was in relation to its priority within the iteration, not the project as a whole.
 
+### Additional Iterations
+
+Following the initial Iteration and development of the front-end core features the back-end was revisited and assigned two additional sprints to build in additional functionality to enhance the site further:
+
+These can be found here:
+
+- Backend Iteration 2: Focus on developing the functionality to allow users to recommend articles to other users (or themselves). Link to interation kanban [here](https://github.com/users/Joe-Collins-1986/projects/14).
+
+- Backend Iteration 3: Focus on developing the functionality to allow users to add multiple links to their aritcles rather than just the github link. Link to interation kanban [here](https://github.com/users/Joe-Collins-1986/projects/15).
+
 ## Models
 
 <details>

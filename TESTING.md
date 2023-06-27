@@ -651,7 +651,7 @@ Serializers:
 
 ### User Stories Acceptance Criteria
 
-Each User Story documented (as an issue) in the Backend Project Iterations [here](https://github.com/Joe-Collins-1986/BitWise-DRF/projects?query=is%3Aclosed) has Acceptance Criteria documented on GitHub which needed to be achieved before marking the User Sory to complete.
+Each User Story documented (as an issue) in the Backend Project Iterations [here](https://github.com/Joe-Collins-1986/BitWise-DRF/projects?query=is%3Aclosed) have Acceptance Criteria documented on GitHub which needed to be achieved before marking the User Sory to complete.
 
 To view these access the User Story Issues.
 
