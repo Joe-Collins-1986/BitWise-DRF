@@ -294,6 +294,18 @@ For site of the project in GitHub detailing the completed User Stories for the b
 
 </details>
 
+<details>
+    <summary style="font-weight:bold">Recommended Model</summary>
+
+| Field Name     | Field Type           | Description                          |
+| -------------- | -------------------- | ------------------------------------ |
+| created_at     | DateTimeField        | Date and time of creation            |
+| recommended_by | ForeignKey (User)    | User who recommended the article     |
+| article        | ForeignKey (Article) | Recommended article                  |
+| recommended_to | ForeignKey (User)    | User who received the recommendation |
+
+</details>
+
 ## Views
 
 <details>

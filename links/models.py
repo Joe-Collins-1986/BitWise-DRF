@@ -8,6 +8,7 @@ class Link(models.Model):
     Link Model:
     Foreign Key - User
     """
+    created_at = models.DateTimeField(auto_now_add=True)
     owner = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
@@ -20,6 +21,9 @@ class Link(models.Model):
     link_title = models.CharField(max_length=255)
     link_brief = models.TextField(blank=True)
     link_url = models.URLField(max_length=255)
+
+    class Meta:
+        ordering = ['-created_at']
 
     def __str__(self):
         return f"{self.owner}'s link for: {self.link_title}"
