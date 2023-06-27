@@ -888,7 +888,7 @@ This serializer can be used to serialize and deserialize Like model data, includ
 </details>
 
 <details>
-    <summary>Recommended Article Serializers</summary>
+    <summary style="font-weight:bold">Recommended Article Serializers</summary>
 
 ### ReceivedRecommendationSerializer
 
@@ -923,7 +923,7 @@ This serializer is used to serialize articles that are being recommended, includ
 </details>
 
 <details>
-    <summary>Link Serializers</summary>
+    <summary style="font-weight:bold">Link Serializers</summary>
 
 ### LinkSerializer
 
@@ -967,7 +967,7 @@ It allows read-only access to an object for any user, but only allows modificati
 </details>
 
 <details>
-    <summary>IsRecipientOrReadOnly Permission</summary>
+    <summary style="font-weight:bold">IsRecipientOrReadOnly</summary>
     
 ### IsRecipientOrReadOnly
 
@@ -991,32 +991,31 @@ To detail the API CRUD functionality in full an API documentation page has been 
 <details>
     <summary style="font-weight:bold">CRUD Table</summary>
 
-| TOPIC     | URL                            | LIST/READ<br>(GET)   | CREATE<br>(POST)                                                                         | UPDATE<br>(PUT) | PARTIAL UPDATE<br>(PATCH) | DELETE<br>(DELETE) | OVERALL  |
-| --------- | ------------------------------ | -------------------- | ---------------------------------------------------------------------------------------- | --------------- | ------------------------- | ------------------ | -------- |
-| AUTH      | /dj-rest-auth/registration/    | ❌                   | ✅                                                                                       | ❌              | ❌                        | ❌                 | C        |
-| AUTH      | /dj-rest-auth/login/           | ❌                   | ✅                                                                                       | ❌              | ❌                        | ❌                 | C        |
-| AUTH      | /dj-rest-auth/logout/          | EXISITS BUT NOT USED | ✅                                                                                       | ❌              | ❌                        | ❌                 | C (USED) |
-| AUTH      | /dj-rest-auth/user/            | ✅                   | GENERATED ON REGISTRATION.                                                               | ✅              | ✅                        | ❌                 | RU       |
-| AUTH      | /dj-rest-auth/password/change/ | ❌                   | ✅                                                                                       | ❌              | ❌                        | ❌                 | C        |
-| AUTH      | /dj-rest-auth/token/refresh/   | ❌                   | ✅                                                                                       | ❌              | ❌                        | ❌                 | C        |
-|           |
-| ARTICLES  | /articles/                     | ✅                   | ✅                                                                                       | ❌              | ❌                        | ❌                 |          |
-| ARTICLES  | /articles/{id}/                | ✅                   | ❌                                                                                       | ✅              | ✅                        | ✅                 | CRUD     |
-|           |                                |                      |
-| COMMENTS  | /comments/                     | ✅                   | ✅                                                                                       | ❌              | ❌                        | ❌                 |          |
-| COMMENTS  | /comments/{id}/                | ✅                   | ❌                                                                                       | ✅              | ✅                        | ✅                 | CRUD     |
-|           |                                |                      |                                                                                          |                 |                           |                    |          |
-| PROFILES  | /profiles/                     | ✅                   | AUTO GENERATED ON USER REGISTRATION VIA SIGNAL. NO ABILITY TO CREATE VIA API SUBMISSION. | ❌              | ❌                        | ❌                 |          |
-| PROFILES  | /profiles/{id}/                | ✅                   | ❌                                                                                       | ✅              | ✅                        | ❌                 | RU       |
-|           |                                |                      |                                                                                          |                 |                           |                    |          |
-| FOLLOWERS | /followers/                    | ✅                   | ✅                                                                                       | ❌              | ❌                        | ❌                 |          |
-| FOLLOWERS | /followers/{id}/               | ✅                   | ❌                                                                                       | ❌              | ❌                        | ✅                 | CRD      |
-|           |                                |
-| LANGUAGES | /languages/                    | ✅                   | ✅                                                                                       | ❌              | ❌                        | ❌                 |          |
-| LANGUAGES | /languages/{id}/               | ✅                   | ❌                                                                                       | ✅              | ✅                        | ✅                 | CRUD     |
-|           |                                |
-| LIKES     | /likes/                        | ✅                   | ✅                                                                                       | ❌              | ❌                        | ❌                 |          |
-| LIKES     | /likes/{id}/                   | ✅                   | ❌                                                                                       | ❌              | ❌                        | ✅                 | CRD      |
+| TOPIC           | URL                            | LIST/READ           | (GET) CREATE                                                                             | (POST) UPDATE | (PUT) PARTIAL UPDATE | (PATCH) DELETE | (DELETE) OVERALL |
+| --------------- | ------------------------------ | ------------------- | ---------------------------------------------------------------------------------------- | ------------- | -------------------- | -------------- | ---------------- |
+| AUTH            | /dj-rest-auth/registration/    | ❌                  | ✅                                                                                       | ❌            | ❌                   | ❌             | C                |
+| AUTH            | /dj-rest-auth/login/           | ❌                  | ✅                                                                                       | ❌            | ❌                   | ❌             | C                |
+| AUTH            | /dj-rest-auth/logout/          | EXISTS BUT NOT USED | ✅                                                                                       | ❌            | ❌                   | ❌             | C (USED)         |
+| AUTH            | /dj-rest-auth/user/            | ✅                  | GENERATED ON REGISTRATION.                                                               | ✅            | ✅                   | ❌             | RU               |
+| AUTH            | /dj-rest-auth/password/change/ | ❌                  | ✅                                                                                       | ❌            | ❌                   | ❌             | C                |
+| AUTH            | /dj-rest-auth/token/refresh/   | ❌                  | ✅                                                                                       | ❌            | ❌                   | ❌             | C                |
+| ARTICLES        | /articles/                     | ✅                  | ✅                                                                                       | ❌            | ❌                   | ❌             |                  |
+| ARTICLES        | /articles/{id}/                | ✅                  | ❌                                                                                       | ✅            | ✅                   | ✅             | CRUD             |
+| COMMENTS        | /comments/                     | ✅                  | ✅                                                                                       | ❌            | ❌                   | ❌             |                  |
+| COMMENTS        | /comments/{id}/                | ✅                  | ❌                                                                                       | ✅            | ✅                   | ✅             | CRUD             |
+| PROFILES        | /profiles/                     | ✅                  | AUTO GENERATED ON USER REGISTRATION VIA SIGNAL. NO ABILITY TO CREATE VIA API SUBMISSION. | ❌            | ❌                   | ❌             |                  |
+| PROFILES        | /profiles/{id}/                | ✅                  | ❌                                                                                       | ✅            | ✅                   | ❌             | RU               |
+| FOLLOWERS       | /followers/                    | ✅                  | ✅                                                                                       | ❌            | ❌                   | ❌             |                  |
+| FOLLOWERS       | /followers/{id}/               | ✅                  | ❌                                                                                       | ❌            | ❌                   | ✅             | CRD              |
+| LANGUAGES       | /languages/                    | ✅                  | ✅                                                                                       | ❌            | ❌                   | ❌             |                  |
+| LANGUAGES       | /languages/{id}/               | ✅                  | ❌                                                                                       | ✅            | ✅                   | ✅             | CRUD             |
+| LIKES           | /likes/                        | ✅                  | ✅                                                                                       | ❌            | ❌                   | ❌             |                  |
+| LIKES           | /likes/{id}/                   | ✅                  | ❌                                                                                       | ❌            | ❌                   | ✅             | CRD              |
+| RECOMMENDATIONS | /recommendations/              | ✅                  | ❌                                                                                       | ❌            | ❌                   | ❌             |                  |
+| RECOMMENDATIONS | /recommendations/add/          | ❌                  | ✅                                                                                       | ❌            | ❌                   | ❌             |                  |
+| RECOMMENDATIONS | /recommendations/remove/{id}/  | ❌                  | ❌                                                                                       | ❌            | ❌                   | ✅             | CRD              |
+| LINKS           | /links/                        | ✅                  | ✅                                                                                       | ❌            | ❌                   | ❌             |                  |
+| LINKS           | /links/{id}/                   | ✅                  | ❌                                                                                       | ✅            | ✅                   | ✅             | CRUD             |
 
 **Note:** Additional endpoints exist for auth functionality. Only detailed ones used.<br>
 For further insight into endpoinds see API docmentation [link](https://bitwise-code-blog.herokuapp.com/#)
@@ -1028,7 +1027,6 @@ For further insight into endpoinds see API docmentation [link](https://bitwise-c
 
 # Further Development
 
-- Add a recommended section to the Profile. Users to be able to recommend articles to other users which would appear in their profile next to languages. This would be achieved by creating a model linking articles to profiles.
 - Add restriction option to the articles which the author could apply. This would restrict users who are not following the author from reading the articles.
 - Add video uploads as well as articles - storing to AWS.
 - Potential for live streaming - would require third party integration with a service such as Wowza, Vimeo, YouTube Live, etc.
